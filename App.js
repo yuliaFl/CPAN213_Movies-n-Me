@@ -1,19 +1,65 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import homePage from "./components/homePage";
-import login from "./components/login";
-import moviePage from "/components/moviePage";
-import navigation from "/components/navigation";
-import register from "/components/return";
-import watchList from "/components/watchList";
-import welcome from "/components/welcome";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import HomePage from "./components/homePage";
+import Login from "./components/login";
+import MoviePage from "./components/moviePage";
+import MovieSearch from "./components/movieSearch";
+import Navigation from "./components/navigation";
+import Register from "./components/register";
+import WatchList from "./components/watchList";
+import Welcome from "./components/welcome";
+
+const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }) {
+  return <HomePage />;
+}
+function LoginScreen({ navigation }) {
+  return <Login />;
+}
+function MovieScreen({ navigation }) {
+  return <MoviePage />;
+}
+function SearchScreen({ navigation }) {
+  return <MovieSearch />;
+}
+function NavigationScreen({ navigation }) {
+  return <Navigation />;
+}
+function RegisterScreen({ navigation }) {
+  return <Register />;
+}
+function WatchScreen({ navigation }) {
+  return <WatchList />;
+}
+function WelcomeScreen({ navigation }) {
+  return (
+    <Welcome/>
+  );
+}
+
+function MyStack() {
+  return (
+    <Stack.Navigator style={styles.container}>
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="MoviePage" component={MovieScreen} />
+      <Stack.Screen name="SearchPage" component={SearchScreen} />
+      <Stack.Screen name="Navigation" component={NavigationScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Watch" component={WatchScreen} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Movies and Me :)</Text> 
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
 }
 
