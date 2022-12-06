@@ -11,7 +11,7 @@ import welcome from "/components/welcome";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hi Justin</Text> 
+      <Text>Movies and Me :)</Text> 
       <StatusBar style="auto" />
     </View>
   );
