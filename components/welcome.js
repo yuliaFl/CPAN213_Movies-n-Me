@@ -35,7 +35,7 @@ export default function App() {
         </logoFadeIn>
       </View>
       <ProgressBar
-        progress={duration}
+        progress={50}
         max={100}
         min={0}
         barColor={bar}
