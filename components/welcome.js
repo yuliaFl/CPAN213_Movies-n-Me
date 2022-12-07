@@ -8,9 +8,9 @@ import {
   FlatList,
   TextInput,
   NativeModules,
+  Image,
   Animated,
 } from "react-native";
-// import logo_proto from "./logo/groupFinal_logo_proto.png";
 import ProgressBar from "./welcomeProgress";
 
 export default function App() {
@@ -33,15 +33,14 @@ export default function App() {
     <View style={styles.Screen}>
       <View>
         <LogoFadeIn>
-          {/* <img src={logo_proto} alt="Logo" /> */}
+          <Image
+            style={{ width: 300, height: 300 }}
+            source={require("../logo/groupFinal_logo_proto.png")}
+            alt="Logo"
+          />
         </LogoFadeIn>
       </View>
-      <ProgressBar
-        progress={50}
-        max={100}
-        min={0}
-        borderColor={"white"}
-      />
+      <ProgressBar progress={50} max={100} min={0} borderColor={"white"} />
       <View></View>
     </View>
   );
