@@ -9,7 +9,7 @@ import {
   NativeModules,
 } from "react-native";
 // import logo_proto from "./logo/groupFinal_logo_proto.png";
-import ProgressBar from "./components/welcomeProgress";
+import ProgressBar from "./welcomeProgress";
 
 export default function App() {
   const logoFadeIn = (props) => {
