@@ -31,7 +31,7 @@ export default function App() {
     <View style={styles.Screen}>
       <View>
         <logoFadeIn>
-          <img src={logo_proto} alt="Logo" />
+          {/* <img src={logo_proto} alt="Logo" /> */}
         </logoFadeIn>
       </View>
       <ProgressBar
