@@ -3,16 +3,19 @@ import { View, StyleSheet, Animated } from "react-native";
 
 
 export default (props) => {
-  const animatedProgressValue = useRef(new Animated.Value(props.min)).current;
+  const animatedProgressValue = useRef(new Animated.Value(0)).current;
+  const animatedValue = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     var progress = props.progress;
     if (progress > props.max) {
       progress = props.max;
     }
-    Animated.timing(animatedProgressValue, {
-      toValue: progress,
-      duration: 10,
-    }).start();
+    Animated.sequence([
+    Animated.timing(animatedProgressValue, {toValue: progress, duration: 4000}),
+    //Animated.timing(animatedProgressValue, {toValue: -100}),
+      
+    
+  ]).start();
   }, [animatedProgressValue, props, props.progress]);
 
   return (

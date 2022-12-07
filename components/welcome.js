@@ -13,6 +13,10 @@ import {
 } from "react-native";
 import ProgressBar from "./welcomeProgress";
 
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
 export default function App() {
   const LogoFadeIn = (props) => {
     const n = useRef(new Animated.Value(0)).current;
@@ -29,30 +33,64 @@ export default function App() {
     );
   };
 
+  // const MoveBar = (props) => {
+  //   const m = useRef(new Animated.Value(0)).current;
+
+  //   useEffect(() => {
+  //     Animated.sequence([
+  //     Animated.timing(m, { toValue: 100, duration: 4000 }),
+  //     Animated.timing(m, { toValue: -100, duration: 1000 }),
+  //     ]).start();
+  //   }, [m]);
+
+  //   return (
+  //     <Animated.View >{props.children}</Animated.View>
+  //   );
+  // };
+
   return (
     <View style={styles.Screen}>
       <View>
         <LogoFadeIn>
           <Image
-            style={{ width: 300, height: 300 }}
-            source={require("../logo/groupFinal_logo_proto.png")}
+            style={{ width: 250, height: 250 }}
+            source={require("../logo/logo_proto2.JPG")}
             alt="Logo"
           />
         </LogoFadeIn>
+        <Seperator />
+        <Seperator />
       </View>
-      <ProgressBar progress={50} max={100} min={0} borderColor={"white"} />
-      <View></View>
+      
+      <ProgressBar
+        style={styles.progressBar}
+        progress={100}
+        max={100}
+        min={0}
+        barColor={"white"}
+        borderColor={"#2B2882"}
+        borderWidth={6}
+      />
+      
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "navy",
+    backgroundColor: "#2B2882",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
+  },
+  seperator: {
+    margin: 6,
+  },
+  progressBar: {
+    borderColor: "white",
+    borderWidth: 6,
   },
 });
