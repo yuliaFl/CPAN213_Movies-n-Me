@@ -8,6 +8,7 @@ import {
   FlatList,
   TextInput,
   NativeModules,
+  Animated,
 } from "react-native";
 // import logo_proto from "./logo/groupFinal_logo_proto.png";
 import ProgressBar from "./welcomeProgress";
