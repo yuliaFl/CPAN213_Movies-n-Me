@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,7 +13,7 @@ import {
 import ProgressBar from "./welcomeProgress";
 
 export default function App() {
-  const logoFadeIn = (props) => {
+  const LogoFadeIn = (props) => {
     const n = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
@@ -30,15 +31,14 @@ export default function App() {
   return (
     <View style={styles.Screen}>
       <View>
-        <logoFadeIn>
+        <LogoFadeIn>
           {/* <img src={logo_proto} alt="Logo" /> */}
-        </logoFadeIn>
+        </LogoFadeIn>
       </View>
       <ProgressBar
         progress={50}
         max={100}
         min={0}
-        barColor={bar}
         borderColor={"white"}
       />
       <View></View>
