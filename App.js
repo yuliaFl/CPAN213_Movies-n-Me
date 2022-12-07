@@ -8,7 +8,7 @@ import MoviePage from "./components/moviePage";
 import MovieSearch from "./components/movieSearch";
 import Navigation from "./components/navigation";
 import Register from "./components/register";
-import WatchList from "./components/watchList";
+//import WatchList from "./components/watchList";
 import Welcome from "./components/welcome";
 
 const Stack = createNativeStackNavigator();
@@ -31,26 +31,24 @@ function NavigationScreen({ navigation }) {
 function RegisterScreen({ navigation }) {
   return <Register />;
 }
-function WatchScreen({ navigation }) {
+/*function WatchScreen({ navigation }) {
   return <WatchList />;
 }
+*/
 function WelcomeScreen({ navigation }) {
-  return (
-    <Welcome/>
-  );
+  return <Welcome />;
 }
 
 function MyStack() {
   return (
     <Stack.Navigator style={styles.container}>
+      <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="MoviePage" component={MovieScreen} />
       <Stack.Screen name="SearchPage" component={SearchScreen} />
-      <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="Watch" component={WatchScreen} />
     </Stack.Navigator>
   );
 }
