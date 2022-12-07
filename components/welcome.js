@@ -8,8 +8,8 @@ import {
   TextInput,
   NativeModules,
 } from "react-native";
-import logo_proto from "./logo/groupFinal_logo_proto.png";
-import ProgressBar from "./components/welcomeProgress";
+// import logo_proto from "./logo/groupFinal_logo_proto.png";
+// import ProgressBar from "./components/welcomeProgress";
 
 export default function App() {
   const logoFadeIn = (props) => {
