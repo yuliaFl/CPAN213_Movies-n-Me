@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import cartReducer from './cart'
+import movieListReducer from './movieList'
 
 // const state = {
-//     cartReducer: {
+//     movieListReducer: {
 //        products: []
 //     }
 // }
 
-export default combineReducers({ cartReducer })
+export default combineReducers({ movieListReducer: movieListReducer })
