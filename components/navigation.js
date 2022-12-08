@@ -21,7 +21,7 @@ export default function Navigation({ navigation }) {
       <h1>Use app as a guest without being able to save movies</h1>
       <Button
         title="Guest"
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("MovieSearch")}
         color="orange"
       />
     </View>
