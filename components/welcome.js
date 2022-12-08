@@ -16,8 +16,7 @@ import ProgressBar from "./welcomeProgress";
 function Seperator() {
   return <View style={styles.seperator}></View>;
 }
-
-export default function App() {
+export default function Welcome({ navigation }) {
   const LogoFadeIn = (props) => {
     const n = useRef(new Animated.Value(0)).current;
 
@@ -26,10 +25,13 @@ export default function App() {
         toValue: 1,
         duration: 4000,
       }).start();
+
+      setTimeout(() => { navigation.navigate("Navigation") }, 4000);
     }, [n]);
 
     return (
-      <Animated.View style={{ opacity: n }}>{props.children}</Animated.View>
+      <Animated.View style={{ opacity: n }}>{props.children}
+      </Animated.View>
     );
   };
 
@@ -47,7 +49,7 @@ export default function App() {
   //     <Animated.View >{props.children}</Animated.View>
   //   );
   // };
-
+  const progValue = 100;
   return (
     <View style={styles.Screen}>
       <View>
@@ -61,18 +63,16 @@ export default function App() {
         <Seperator />
         <Seperator />
       </View>
-      
+
       <ProgressBar
         style={styles.progressBar}
-        progress={100}
+        progress={progValue}
         max={100}
         min={0}
         barColor={"white"}
         borderColor={"#2B2882"}
         borderWidth={6}
       />
-      
-      
     </View>
   );
 }

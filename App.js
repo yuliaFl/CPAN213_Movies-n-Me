@@ -47,14 +47,11 @@ function WatchScreen({ navigation }) {
   );
 }
 */
-function WelcomeScreen({ navigation }) {
-  return <Welcome />;
-}
 
 function MyStack() {
   return (
     <Stack.Navigator style={styles.container}>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
