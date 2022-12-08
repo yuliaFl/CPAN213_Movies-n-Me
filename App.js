@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from 'react-redux'
+import store from './redux/store/index';
 import HomePage from "./components/homePage";
 import Login from "./components/login";
 import MoviePage from "./components/moviePage";
@@ -20,7 +22,11 @@ function LoginScreen({ navigation }) {
   return <Login />;
 }
 function MovieScreen({ navigation }) {
-  return <MoviePage />;
+  return (
+    <Provider store={store}>
+      <MoviePage/>
+    </Provider>
+  );
 }
 function SearchScreen({ navigation }) {
   return <MovieSearch />;
@@ -33,6 +39,12 @@ function RegisterScreen({ navigation }) {
 }
 /*function WatchScreen({ navigation }) {
   return <WatchList />;
+function WatchScreen({ navigation }) {
+  return (
+    <Provider store={store}>
+      <WatchList/>
+    </Provider>
+  );
 }
 */
 function WelcomeScreen({ navigation }) {
