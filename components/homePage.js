@@ -11,7 +11,7 @@ import {
 
 export default function Home({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.Screen}>
       <h1>Search up a movie</h1>
       <Button
         title="Movie Search Page"
@@ -30,7 +30,7 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Screen: {
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#fff",
