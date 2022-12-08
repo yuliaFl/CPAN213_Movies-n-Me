@@ -12,16 +12,17 @@ import {
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <h1>nav</h1>
+      <h1>Search up a movie</h1>
       <Button
         title="Movie Search Page"
         onPress={() => navigation.navigate("MovieSearch")}
         color="orange"
       />
       <br />
+      <h1>View a list of movies you want to watch</h1>
       <Button
         title="Watch List"
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("WatchList")}
         color="orange"
       />
     </View>

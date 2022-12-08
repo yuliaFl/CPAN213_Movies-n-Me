@@ -26,7 +26,7 @@ function MovieScreen({ navigation }) {
 function WatchScreen({ navigation }) {
   return (
     <Provider store={store}>
-      <WatchList/>
+      <WatchList />
     </Provider>
   );
 }
