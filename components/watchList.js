@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, FlatList, Button } from 'react-native';
 import { connect } from 'react-redux'; //npm install --save react-redux
-// import {
-//   addToCart,
-//   removeFromCart,
-// } from '../redux/actions/index';
+import {
+  removeFromCart,
+} from '../redux/actions/index';
 
 
 const WatchListPage = ({
@@ -12,9 +11,9 @@ const WatchListPage = ({
 }) => {  
   const renderMovieList = ({ item }) => (
     <View>
-      <Text>{item.title}</Text>
-      <Text>${item.price}</Text>
-      <Text>{item.description}</Text>
+      <Text>{item.Title}</Text>
+      <Text>{item.Year}</Text>
+      <Text>{item.Plot}</Text>
       {/* <Button title="Remove from WatchList" onPress={() => removeProductFromCart(item)} /> */}
       <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
     </View>
