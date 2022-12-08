@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, FlatList, Button } from 'react-native';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; //npm install --save react-redux
 // import {
 //   addToCart,
 //   removeFromCart,
@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
 const WatchListPage = ({
   movieList,
-  // removeProductFromCart,
 }) => {  
   const renderMovieList = ({ item }) => (
     <View>
@@ -37,13 +36,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-// // Needed to convert redux actions to props for the component
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addProductToCart: (product) => dispatch(addToCart(product)),
-//     removeProductFromCart: (product) => dispatch(removeFromCart(product)),
-//   };
-// };
+// Needed to convert redux actions to props for the component
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProductToCart: (product) => dispatch(addToCart(product)),
+    removeProductFromCart: (product) => dispatch(removeFromCart(product)),
+  };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(WatchListPage);
-export default connect(mapStateToProps)(WatchListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(WatchListPage);

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'; //npm install redux if not installed
 import movieListReducer from './movieList'
 
 // const state = {
@@ -7,4 +7,4 @@ import movieListReducer from './movieList'
 //     }
 // }
 
-export default combineReducers({ movieListReducer: movieListReducer })
+export default combineReducers({ movieListReducer })
