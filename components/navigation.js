@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, NativeModules } from "react-native";
 
 export default function Navigation({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.Screen}>
       <h1>Please login</h1>
       <Button
         title="Login"
@@ -21,7 +21,7 @@ export default function Navigation({ navigation }) {
       <h1>Use app as a guest without being able to save movies</h1>
       <Button
         title="Guest"
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("MovieSearch")}
         color="orange"
       />
     </View>
@@ -29,12 +29,15 @@ export default function Navigation({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "#2B2882",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
+  },
+  seperator: {
+    margin: 6,
   },
 });

@@ -35,20 +35,6 @@ export default function Welcome({ navigation }) {
     );
   };
 
-  // const MoveBar = (props) => {
-  //   const m = useRef(new Animated.Value(0)).current;
-
-  //   useEffect(() => {
-  //     Animated.sequence([
-  //     Animated.timing(m, { toValue: 100, duration: 4000 }),
-  //     Animated.timing(m, { toValue: -100, duration: 1000 }),
-  //     ]).start();
-  //   }, [m]);
-
-  //   return (
-  //     <Animated.View >{props.children}</Animated.View>
-  //   );
-  // };
   const progValue = 100;
   return (
     <View style={styles.Screen}>

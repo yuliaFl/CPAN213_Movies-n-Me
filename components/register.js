@@ -16,7 +16,7 @@ import {
   }
 
   const styles = StyleSheet.create({
-    container: {
+    Screen: {
       flex: 1,
       flexDirection:"column",
       backgroundColor: "#fff",
