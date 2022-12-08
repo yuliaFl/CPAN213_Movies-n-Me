@@ -1,27 +1,121 @@
-import * as React from 'react'
-import {
-    StyleSheet,
-    Text,
-    View,
-    Button,
-    FlatList,
-    TextInput,
-    NativeModules,
-  } from "react-native";
+import * as React from 'react';
+import { Checkbox, NativeBaseProvider } from 'native-base';
+import { useState } from 'react';
+import { TextInput, View, Text, Button, StyleSheet, Modal } from 'react-native';
 
-  export default function App() {
-    return (
-<h1>HOME</h1>
-    )
-  }
-
-  const styles = StyleSheet.create({
-    Screen: {
-      flex: 1,
-      flexDirection:"column",
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-      paddingHorizontal: 10
-    },
+function RegistrationForm() {
+  const [state, setState] = useState({
+    email: '',
+    userName: '',
+    confirmPass: '',
+    error: '',
+    password: '',
   });
+  const [showModal, setShowModal] = useState(false);
+  // const [userName, setUserName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [confirmPass, setConfirmPass] = useState('');
+  const [isSelected, setSelection] = useState(false);
+  const inputValidator = () => {
+    if (state.userName == '') {
+      setState({ ...state, error: 'Fields Cannot be Empty' });
+    } else {
+      setState({ ...state, error: '' });
+    }
+  };
+
+  return (
+    <NativeBaseProvider>
+      <View style={styles.container}>
+        <Text style={styles.txt_title}>Create Account</Text>
+        <Text style={styles.error}>{state.error}</Text>
+        <TextInput
+          style={styles.input_container}
+          placeholder={'Username'}
+          onChangeText={(text) => {
+            setState({ userName: text });
+          }}
+          onBlur={() => inputValidator()}
+        />
+        <TextInput
+          style={styles.input_container}
+          placeholder={'Email'}
+          onChangeText={(text) => {
+            setState({ email: text });
+          }}
+          onBlur={() => inputValidator()}
+        />
+        <TextInput
+          style={styles.input_container}
+          placeholder={'Password'}
+          secureTextEntry={true}
+          onChangeText={(text) => {
+            setState({ password: text });
+          }}
+          onBlur={() => inputValidator()}
+        />
+        <TextInput
+          style={styles.input_container}
+          placeholder={'Confirm Password'}
+          secureTextEntry={true}
+          onChangeText={(text) => {
+            setState({ confirmPass: text });
+          }}
+        />
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox value={isSelected} onValueChange={setSelection}>
+            <Text style={styles.small_txt}>
+              Agree with terms and conditions
+            </Text>
+          </Checkbox>
+        </View>
+        <Button
+          title="Create Account"
+          onPress={() => {
+            console.log('You pressed!');
+          }}></Button>
+      </View>
+    </NativeBaseProvider>
+  );
+}
+// const Divider = () => {
+//   return <View style={{ height: 1 }}></View>;
+// };
+const styles = StyleSheet.create({
+  txt_title: {
+    paddingTop: 10,
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: '#000',
+    margin: 25,
+  },
+  input_container: {
+    borderRadius: 50,
+    margin: 6,
+    shadowRadius: 9,
+    padding: 10,
+    color: 'blue',
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    paddingLeft: 9,
+  },
+
+  container: {
+    alignItems: 'center',
+    margin: 12,
+    padding: 10,
+  },
+  small_txt: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    padding: 25,
+  },
+  error: {
+    color: 'red',
+  },
+});
+
+export default RegistrationForm;
