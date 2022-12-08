@@ -10,8 +10,17 @@ import {
   } from "react-native";
 
   export default function App() {
+    const [movie, setMovie] = useState();
+    const handleAddMovie = () => { setItems(movie); };
+    // useEffect(() => {          //THIS USEEFFECT IS CURSED, USE DIFFERENT ONE
+    //     fetch('https://dummy.restapiexample.com/api/v1/employees') //API
+    //       .then((response) => response.json())
+    //       .then((json) => {handleSetItems(json.data);});
+    //       console.log("Data Retrived and Assigned")
+    //     // handleSetItems(APIcopy.data);
+    //   }, []);
     return (
-<h1>HOME</h1>
+      <h1>movieSearch</h1>
     )
   }
 
