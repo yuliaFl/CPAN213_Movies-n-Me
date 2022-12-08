@@ -1,29 +1,33 @@
 import * as React from "react";
-import { StyleSheet, Text, View, Button, NativeModules } from "react-native";
+import { StyleSheet, Text, View, NativeModules, TouchableOpacity, Image } from "react-native";
 
 export default function Navigation({ navigation }) {
   return (
     <View style={styles.Screen}>
-      <h1>Please login</h1>
-      <Button
-        title="Login"
-        onPress={() => navigation.navigate("Login")}
-        color="orange"
-      />
-      <br />
-      <h1>Register an account with us</h1>
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate("Register")}
-        color="orange"
-      />
-      <br />
-      <h1>Use app as a guest without being able to save movies</h1>
-      <Button
-        title="Guest"
-        onPress={() => navigation.navigate("MovieSearch")}
-        color="orange"
-      />
+      <Image
+            style={{ width: 180, height: 180 }}
+            source={require("../logo/logo_proto2.JPG")}
+            alt="Logo"
+          />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}> Login </Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.buttonText}> Register </Text>
+      </TouchableOpacity>
+        
+     <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('MovieSearch')}>
+        <Text style={styles.buttonText}> Browse As Guest </Text>
+      </TouchableOpacity>
+      
     </View>
   );
 }
@@ -39,5 +43,23 @@ const styles = StyleSheet.create({
   },
   seperator: {
     margin: 6,
+  },
+  button:{
+    backgroundColor: '#E63169',
+    display: 'flex',
+    height: 60,
+    borderRadius: 100,
+    marginTop: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '75%',
+    shadowColor: 'hotpink',
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  buttonText:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     height: 50,
     padding: 0,
     overflow: "hidden",
-    borderRadius: 40,
+    borderRadius: 100,
     width: "80%",
   },
   bar: {

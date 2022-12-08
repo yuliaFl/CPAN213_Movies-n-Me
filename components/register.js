@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Checkbox, NativeBaseProvider } from 'native-base';
-import { useState } from 'react';
-import { TextInput, View, Text, Button, StyleSheet, Modal } from 'react-native';
+import * as React from "react";
+import { Checkbox, NativeBaseProvider } from "native-base";
+import { useState } from "react";
+import { TextInput, View, Text, Button, StyleSheet, Modal, TouchableOpacity } from "react-native";
 
 function RegistrationForm() {
   const [state, setState] = useState({
-    email: '',
-    userName: '',
-    confirmPass: '',
-    error: '',
-    password: '',
+    email: "",
+    userName: "",
+    confirmPass: "",
+    error: "",
+    password: "",
   });
   const [showModal, setShowModal] = useState(false);
   // const [userName, setUserName] = useState('');
@@ -18,10 +18,10 @@ function RegistrationForm() {
   // const [confirmPass, setConfirmPass] = useState('');
   const [isSelected, setSelection] = useState(false);
   const inputValidator = () => {
-    if (state.userName == '') {
-      setState({ ...state, error: 'Fields Cannot be Empty' });
+    if (state.userName == "") {
+      setState({ ...state, error: "Fields Cannot be Empty" });
     } else {
-      setState({ ...state, error: '' });
+      setState({ ...state, error: "" });
     }
   };
 
@@ -32,7 +32,7 @@ function RegistrationForm() {
         <Text style={styles.error}>{state.error}</Text>
         <TextInput
           style={styles.input_container}
-          placeholder={'Username'}
+          placeholder={"Username"}
           onChangeText={(text) => {
             setState({ userName: text });
           }}
@@ -40,7 +40,7 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={'Email'}
+          placeholder={"Email"}
           onChangeText={(text) => {
             setState({ email: text });
           }}
@@ -48,7 +48,7 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={'Password'}
+          placeholder={"Password"}
           secureTextEntry={true}
           onChangeText={(text) => {
             setState({ password: text });
@@ -57,7 +57,7 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={'Confirm Password'}
+          placeholder={"Confirm Password"}
           secureTextEntry={true}
           onChangeText={(text) => {
             setState({ confirmPass: text });
@@ -71,11 +71,10 @@ function RegistrationForm() {
             </Text>
           </Checkbox>
         </View>
-        <Button
-          title="Create Account"
-          onPress={() => {
-            console.log('You pressed!');
-          }}></Button>
+        <TouchableOpacity style={styles.button}>
+          {/* Darien please put a confirm alert in the onPress function here, thank you */}
+          <Text style={styles.buttonText}> Create Account </Text>
+        </TouchableOpacity>
       </View>
     </NativeBaseProvider>
   );
@@ -86,9 +85,9 @@ function RegistrationForm() {
 const styles = StyleSheet.create({
   txt_title: {
     paddingTop: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 30,
-    color: '#000',
+    color: "#000",
     margin: 25,
   },
   input_container: {
@@ -96,25 +95,43 @@ const styles = StyleSheet.create({
     margin: 6,
     shadowRadius: 9,
     padding: 10,
-    color: 'blue',
+    color: "blue",
   },
   checkboxContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingLeft: 9,
   },
 
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     margin: 12,
     padding: 10,
   },
   small_txt: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 12,
     padding: 25,
   },
   error: {
-    color: 'red',
+    color: "red",
+  },
+  button: {
+    backgroundColor: "#E63169",
+    display: "flex",
+    height: 60,
+    borderRadius: 100,
+    marginTop: 35,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "75%",
+    shadowColor: "hotpink",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
   },
 });
 

@@ -32,8 +32,15 @@ function WatchScreen({ navigation }) {
 }
 
 function MyStack() {
+  var options = {
+    headerStyle: { backgroundColor: '#2B2882' },
+    headerTintColor: 'white',
+    headerTitleAlign: 'center',
+    headerTitleStyle: { fontWeight: 'bold' },
+  };
   return (
     <Stack.Navigator style={styles.container}>
+      <Stack.Group screenOptions={options}>
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Navigation" component={Navigation} />
       <Stack.Screen name="Home" component={HomePage} />
@@ -42,6 +49,7 @@ function MyStack() {
       <Stack.Screen name="MovieSearch" component={MovieSearch} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name ="WatchList" component={WatchScreen}/>
+      </Stack.Group>
     </Stack.Navigator>
   );
 }
