@@ -11,6 +11,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
 function RegistrationForm() {
   const [state, setState] = useState({
     email: '',
@@ -35,8 +39,8 @@ function RegistrationForm() {
 
   return (
     <NativeBaseProvider>
-      <View style={styles.container}>
-        <Text style={styles.txt_title}>Create Account</Text>
+      <View style={styles.Screen}>
+        <Text style={styles.title}>Create Account</Text>
         <Text style={styles.error}>{state.error}</Text>
         <TextInput
           style={styles.input_container}
@@ -78,26 +82,35 @@ function RegistrationForm() {
           onRequestClose={() => {
             setShowModal(!showModal);
           }}>
-          <View style={styles.container1}>
+          <View style={styles.modalContainer}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>
-                Are you sure you want to continue?
+                Are you sure you want to register?
               </Text>
-              <View>
-                {' '}
-                {/*Do something once the user clicks YES like ---> onPress={() =>
-                navigation.navigate('Home', setShowModal(!showModal)) OR Something*/}
-                <Button title="Yes" onPress={() => setShowModal(!showModal)} />
-              </View>
+              <View style={styles.modalBtnRow}>
+                <TouchableOpacity
+                  style={styles.modalButton}
+                  onPress={() => navigation.navigate("Home")}
+                >
+                  <Text style={styles.modalBtnText}> YES </Text>
+                </TouchableOpacity>
+                <br /><Seperator />
+                <Seperator />
 
-              <Button title="No" onPress={() => setShowModal(!showModal)} />
+                <TouchableOpacity
+                  style={styles.modalButton}
+                  onPress={() => setShowModal(!showModal)}
+                >
+                  <Text style={styles.modalBtnText}> NO </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </Modal>
 
         <View style={styles.checkboxContainer}>
           <Checkbox value={isSelected} onValueChange={setSelection}>
-            <Text style={styles.small_txt}>
+            <Text style={styles.checkBox}>
               Agree with terms and conditions
             </Text>
           </Checkbox>
@@ -115,34 +128,38 @@ function RegistrationForm() {
 //   return <View style={{ height: 1 }}></View>;
 // };
 const styles = StyleSheet.create({
-  txt_title: {
-    paddingTop: 10,
+  Screen: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "#2B2882",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+  },
+  title: {
     fontWeight: 'bold',
-    fontSize: 30,
-    color: '#000',
-    margin: 25,
+    fontSize: 32,
+    color: '#F2E5CE',
+    marginBottom: 25,
   },
   input_container: {
-    borderRadius: 11,
-    margin: 8,
+    backgroundColor: "#000000",
+    borderRadius: 12,
+    margin: 10,
     shadowRadius: 2,
-    padding: 12,
-    color: 'blue',
+    padding: 14,
+    color: '#F9BC08',
+    width: '80%'
   },
   checkboxContainer: {
     flexDirection: 'row',
     paddingLeft: 9,
   },
-
-  container: {
-    alignItems: 'center',
-    margin: 11,
-    padding: 10,
-  },
-  small_txt: {
+  checkBox: {
+    color: '#F9BC08',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 12,
-    padding: 25,
+    margin: 8
   },
   error: {
     color: 'red',
@@ -166,24 +183,51 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  container1: {
+  modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
   },
+  modalButton: {
+    backgroundColor: "#F9BC08",
+    width: 70,
+    height: 50,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#F2E5CE",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  modalBtnRow: {
+    marginTop: 10,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  modalBtnText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#2B2882",
+  },
   modalText: {
     margin: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#E63169",
   },
-
   modalView: {
-    width: '65%',
-    borderWidth: 1.2,
+    width: "80%",
+    height: 180,
+    borderWidth: 2,
     borderRadius: 15,
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: 'white',
+    borderColor: "#E63169",
+    padding: 15,
+    alignItems: "center",
+    backgroundColor: "#000000",
+  },
+  seperator: {
+    margin: 6,
   },
 });
 
