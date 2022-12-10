@@ -23,10 +23,10 @@ export default function Welcome({ navigation }) {
     useEffect(() => {
       Animated.timing(n, {
         toValue: 1,
-        duration: 400,
+        duration: 3000,
       }).start();
 
-      setTimeout(() => { navigation.navigate("Navigation") }, 400);
+      setTimeout(() => { navigation.navigate("Navigation") }, 3000);
     }, [n]);
 
     return (

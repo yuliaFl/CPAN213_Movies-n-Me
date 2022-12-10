@@ -11,7 +11,7 @@ export default (props) => {
       progress = props.max;
     }
     Animated.sequence([
-    Animated.timing(animatedProgressValue, {toValue: progress, duration: 400}),
+    Animated.timing(animatedProgressValue, {toValue: progress, duration: 3000}),
     //Animated.timing(animatedProgressValue, {toValue: -100}),
       
     
