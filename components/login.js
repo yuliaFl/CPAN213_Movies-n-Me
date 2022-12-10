@@ -64,7 +64,8 @@ function LogingForm() {
               <Text style={styles.modalText}>
                 Are you sure you want to log in?
               </Text>
-              <View>
+              <View>{/* Do something once the user clicks Yes like ---> onPress={() =>
+                navigation.navigate('Home', setShowModal(!showModal)*/}
               <Button title="Yes" onPress={() => setShowModal(!showModal)} />
               </View> 
               <Button title="No" onPress={() => setShowModal(!showModal)} />   
