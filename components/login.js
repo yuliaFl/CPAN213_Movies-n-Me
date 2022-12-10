@@ -60,15 +60,16 @@ function LogingForm() {
           }}>
           <View style={styles.container1}>
             <View style={styles.modalView}>
-                            
+
               <Text style={styles.modalText}>
                 Are you sure you want to log in?
               </Text>
-              <View>{/* Do something once the user clicks Yes like ---> onPress={() =>
-                navigation.navigate('Home', setShowModal(!showModal)*/}
-              <Button title="Yes" onPress={() => setShowModal(!showModal)} />
-              </View> 
-              <Button title="No" onPress={() => setShowModal(!showModal)} />   
+              <View>
+                <Button title="Yes" onPress={() => setShowModal(!showModal)} />
+              </View>
+
+              <Button title="No" onPress={() => setShowModal(!showModal)} />
+
             </View>
           </View>
         </Modal>
@@ -80,7 +81,6 @@ function LogingForm() {
         </TouchableOpacity>
 
         <View>
-          <br />
           <Checkbox>
             <Text fontSize="md" style={{ color: 'black' }}>
               Remember Password?

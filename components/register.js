@@ -1,15 +1,23 @@
-import * as React from "react";
-import { Checkbox, NativeBaseProvider } from "native-base";
-import { useState } from "react";
-import { TextInput, View, Text, Button, StyleSheet, Modal, TouchableOpacity } from "react-native";
+import * as React from 'react';
+import { Checkbox, NativeBaseProvider } from 'native-base';
+import { useState } from 'react';
+import {
+  TextInput,
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 
 function RegistrationForm() {
   const [state, setState] = useState({
-    email: "",
-    userName: "",
-    confirmPass: "",
-    error: "",
-    password: "",
+    email: '',
+    userName: '',
+    confirmPass: '',
+    error: '',
+    password: '',
   });
   const [showModal, setShowModal] = useState(false);
   // const [userName, setUserName] = useState('');
@@ -18,10 +26,10 @@ function RegistrationForm() {
   // const [confirmPass, setConfirmPass] = useState('');
   const [isSelected, setSelection] = useState(false);
   const inputValidator = () => {
-    if (state.userName == "") {
-      setState({ ...state, error: "Fields Cannot be Empty" });
+    if (state.userName == '') {
+      setState({ ...state, error: 'Fields Cannot be Empty' });
     } else {
-      setState({ ...state, error: "" });
+      setState({ ...state, error: '' });
     }
   };
 
@@ -32,7 +40,7 @@ function RegistrationForm() {
         <Text style={styles.error}>{state.error}</Text>
         <TextInput
           style={styles.input_container}
-          placeholder={"Username"}
+          placeholder={'Username'}
           onChangeText={(text) => {
             setState({ userName: text });
           }}
@@ -40,7 +48,7 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={"Email"}
+          placeholder={'Email'}
           onChangeText={(text) => {
             setState({ email: text });
           }}
@@ -48,7 +56,7 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={"Password"}
+          placeholder={'Password'}
           secureTextEntry={true}
           onChangeText={(text) => {
             setState({ password: text });
@@ -57,12 +65,35 @@ function RegistrationForm() {
         />
         <TextInput
           style={styles.input_container}
-          placeholder={"Confirm Password"}
+          placeholder={'Confirm Password'}
           secureTextEntry={true}
           onChangeText={(text) => {
             setState({ confirmPass: text });
           }}
         />
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={showModal}
+          onRequestClose={() => {
+            setShowModal(!showModal);
+          }}>
+          <View style={styles.container1}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>
+                Are you sure you want to continue?
+              </Text>
+              <View>
+                {' '}
+                {/*Do something once the user clicks YES like ---> onPress={() =>
+                navigation.navigate('Home', setShowModal(!showModal)) OR Something*/}
+                <Button title="Yes" onPress={() => setShowModal(!showModal)} />
+              </View>
+
+              <Button title="No" onPress={() => setShowModal(!showModal)} />
+            </View>
+          </View>
+        </Modal>
 
         <View style={styles.checkboxContainer}>
           <Checkbox value={isSelected} onValueChange={setSelection}>
@@ -71,8 +102,9 @@ function RegistrationForm() {
             </Text>
           </Checkbox>
         </View>
-        <TouchableOpacity style={styles.button}>
-          {/* Darien please put a confirm alert in the onPress function here, thank you */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setShowModal(!showModal)}>
           <Text style={styles.buttonText}> Create Account </Text>
         </TouchableOpacity>
       </View>
@@ -85,53 +117,73 @@ function RegistrationForm() {
 const styles = StyleSheet.create({
   txt_title: {
     paddingTop: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 30,
-    color: "#000",
+    color: '#000',
     margin: 25,
   },
   input_container: {
-    borderRadius: 50,
-    margin: 6,
-    shadowRadius: 9,
-    padding: 10,
-    color: "blue",
+    borderRadius: 11,
+    margin: 8,
+    shadowRadius: 2,
+    padding: 12,
+    color: 'blue',
   },
   checkboxContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingLeft: 9,
   },
 
   container: {
-    alignItems: "center",
-    margin: 12,
+    alignItems: 'center',
+    margin: 11,
     padding: 10,
   },
   small_txt: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 12,
     padding: 25,
   },
   error: {
-    color: "red",
+    color: 'red',
   },
   button: {
-    backgroundColor: "#E63169",
-    display: "flex",
+    backgroundColor: '#E63169',
+    display: 'flex',
     height: 60,
     borderRadius: 100,
-    marginTop: 35,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "75%",
-    shadowColor: "hotpink",
+    marginTop: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '75%',
+    shadowColor: 'hotpink',
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
+
   buttonText: {
     fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  container1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalText: {
+    margin: 15,
+    fontWeight: 'bold',
+  },
+
+  modalView: {
+    width: '65%',
+    borderWidth: 1.2,
+    borderRadius: 15,
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
 });
 
