@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput, Button, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
+import { Checkbox, NativeBaseProvider } from 'native-base';
 
-import { Checkbox, NativeBaseProvider } from "native-base";
-
-const Main = () => {
+function LogingForm() {
+  const [showModal, setShowModal] = useState(false);
   const [state, setState] = useState({
-    email: "",
-    error: "",
-    password: "",
+    email: '',
+    error: '',
+    password: '',
   });
   const inputValidator = () => {
-    if (state.email == "") {
-      setState({ ...state, error: "Email Cannot be empty" });
+    if (state.email == '') {
+      setState({ ...state, error: 'Email field Cannot be empty' });
     } else {
-      setState({ ...state, error: "" });
+      setState({ ...state, error: '' });
     }
   };
   return (
@@ -23,7 +31,7 @@ const Main = () => {
         <Text style={styles.error}>{state.error}</Text>
         <TextInput
           style={styles.input_container}
-          placeholder="Email"
+          placeholder="Email Address"
           onChangeText={(text) => {
             setState({ email: text });
           }}
@@ -32,6 +40,7 @@ const Main = () => {
           marginX={10}
           marginY={5}
         />
+        <Text style={styles.error}>{state.error1}</Text>
         <TextInput
           style={styles.input_container}
           placeholder="Password"
@@ -42,15 +51,37 @@ const Main = () => {
           variant="rounded"
           marginX={10}
         />
-        <TouchableOpacity style={styles.button}>
-          {/* Darien please put a confirm alert in the onPress function here, thank you */}
-          <Text style={styles.buttonText}> Confirm Login </Text>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={showModal}
+          onRequestClose={() => {
+            setShowModal(!showModal);
+          }}>
+          <View style={styles.container1}>
+            <View style={styles.modalView}>
+                            
+              <Text style={styles.modalText}>
+                Are you sure you want to log in?
+              </Text>
+              <View>
+              <Button title="Yes" onPress={() => setShowModal(!showModal)} />
+              </View> 
+              <Button title="No" onPress={() => setShowModal(!showModal)} />   
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setShowModal(!showModal)}>
+          <Text style={styles.buttonText}> Login </Text>
         </TouchableOpacity>
 
         <View>
           <br />
           <Checkbox>
-            <Text fontSize="md" style={{ color: "black" }}>
+            <Text fontSize="md" style={{ color: 'black' }}>
               Remember Password?
             </Text>
           </Checkbox>
@@ -58,51 +89,73 @@ const Main = () => {
       </View>
     </NativeBaseProvider>
   );
-};
+}
 
-export default Main;
+export default LogingForm;
 
 const styles = StyleSheet.create({
   title: {
-    paddingTop: 10,
-    fontWeight: "bold",
-    fontSize: 30,
-    color: "#000",
+    paddingTop: 15,
+    fontWeight: 'bold',
+    fontSize: 32,
+    color: '#000',
     margin: 25,
   },
 
   container: {
-    alignItems: "center",
+    alignItems: 'center',
     margin: 12,
     padding: 10,
   },
+  container1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
   input_container: {
-    borderRadius: 50,
-    margin: 6,
-    shadowRadius: 9,
-    padding: 10,
-    color: "blue",
+    borderRadius: 10,
+    margin: 8,
+    shadowRadius: 2,
+    padding: 14,
+    color: 'blue',
   },
 
   error: {
-    color: "red",
+    color: 'red',
   },
   button: {
-    backgroundColor: "#E63169",
-    display: "flex",
+    backgroundColor: '#E63169',
+    display: 'flex',
     height: 60,
     borderRadius: 100,
     marginTop: 35,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "75%",
-    shadowColor: "hotpink",
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '75%',
+    shadowColor: 'hotpink',
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
   buttonText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  modalText: {
+    margin: 15,
+    fontWeight: 'bold',
+  },
+
+  modalView: {
+    width: '65%',
+    // height: 'auto',
+    // margin: 15,
+    // borderColor: 'black',
+    borderWidth: 1.2,
+    borderRadius: 15,
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
 });
