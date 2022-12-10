@@ -25,7 +25,7 @@ import {
 
 //       <Stack.Screen name="MovieSearch" component={MovieSearchPage} />
 
-const MovieSearchPage = ({
+const MovieSearch = ({
   addProductToCart,
   removeProductFromCart,
 }) => {
@@ -121,7 +121,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieSearchPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch);
 
 const styles = StyleSheet.create({
   container: {

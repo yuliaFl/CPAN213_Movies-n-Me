@@ -43,8 +43,8 @@ export default (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth:1,
-    height: 50,
+    borderWidth: 1,
+    height: 55,
     padding: 0,
     overflow: "hidden",
     borderRadius: 100,
