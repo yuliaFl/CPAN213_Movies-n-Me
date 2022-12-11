@@ -4,8 +4,10 @@ import { connect } from 'react-redux'; //npm install --save react-redux
 import {
   removeFromCart,
 } from '../redux/actions/index';
+import { Provider } from 'react-redux'
+import store from '../redux/store/index';
 
-
+var navigation2
 const WatchListPage = ({
   movieList,
 }) => {  
@@ -14,10 +16,24 @@ const WatchListPage = ({
       <Text>{item.Title}</Text>
       <Text>{item.Year}</Text>
       <Text>{item.Plot}</Text>
+      <Button title="Go to" onPress={() => navigation2.navigate("MoviePage", item.imdbID)} />
       {/* <Button title="Remove from WatchList" onPress={() => removeProductFromCart(item)} /> */}
       <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
     </View>
   );
+  // const renderMovieList = ({ item }) => {
+  //   var imdbID = item.imdbID
+  //   return (
+  //     <View>
+  //       <Text>{item.Title}</Text>
+  //       <Text>{item.Year}</Text>
+  //       <Text>{item.Plot}</Text>
+  //       <Button title="Go to" onPress={() => navigation.navigate("MoviePage", {imdbID})} />
+  //       {/* <Button title="Remove from WatchList" onPress={() => removeProductFromCart(item)} /> */}
+  //       <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
+  //     </View>
+  //   )
+  // };
 
   return (
     <View>
@@ -57,4 +73,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WatchListPage);
+
+export default function WatchList({ navigation }) { //name is now different!!!
+  navigation2 = navigation
+  const WatchListConnect = (
+    connect(mapStateToProps, mapDispatchToProps)(WatchListPage)
+  )
+  return (
+    <Provider store={store}>
+      <WatchListConnect/>
+    </Provider>
+  );
+};
+//export default connect(mapStateToProps, mapDispatchToProps)(WatchListPage);

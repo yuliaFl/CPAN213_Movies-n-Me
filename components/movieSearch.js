@@ -12,22 +12,15 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/actions/index";
-
-// function MovieSearchPage({ navigation }) {
-//   return (
-//     <Provider store={store}>
-//       <MovieSearch/>
-//     </Provider>
-//   );
-// }
-
-//       <Stack.Screen name="MovieSearch" component={MovieSearchPage} />
+import { Provider } from 'react-redux'
+import store from '../redux/store/index';
 
 function Seperator() {
   return <View style={styles.seperator}></View>;
 }
 
-const MovieSearch = ({ addProductToCart, removeProductFromCart }) => {
+var navigation2
+const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
   const emptyMovie = {
     Title: " ",
     Year: " ",
@@ -111,7 +104,13 @@ const MovieSearch = ({ addProductToCart, removeProductFromCart }) => {
         >
           <Text style={styles.buttonText}> Add to Watch List </Text>
         </TouchableOpacity>
-        {/* <Seperator /><Seperator /><Seperator /> */}
+        <Seperator /><Seperator /><Seperator />
+        <TouchableOpacity
+          style={styles.button2}
+          onPress={() => navigation2.navigate("WatchList")}
+        >
+          <Text style={styles.buttonText2}> Open Watch List </Text>
+        </TouchableOpacity>
       </View>
 
     </View>
@@ -133,7 +132,18 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch);
+// export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch);
+export default function MovieSearch({ navigation }) {
+  navigation2 = navigation
+  const MovieSearchConnect = (
+    connect(mapStateToProps, mapDispatchToProps)(MovieSearchPage)
+  )
+  return (
+    <Provider store={store}>
+      <MovieSearchConnect/>
+    </Provider>
+  );
+};
 
 const styles = StyleSheet.create({
   Screen: {
