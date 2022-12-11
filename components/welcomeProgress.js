@@ -11,7 +11,7 @@ export default (props) => {
       progress = props.max;
     }
     Animated.sequence([
-    Animated.timing(animatedProgressValue, {toValue: progress, duration: 4000}),
+    Animated.timing(animatedProgressValue, {toValue: progress, duration: 3000}),
     //Animated.timing(animatedProgressValue, {toValue: -100}),
       
     
@@ -43,8 +43,8 @@ export default (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth:1,
-    height: 50,
+    borderWidth: 1,
+    height: 55,
     padding: 0,
     overflow: "hidden",
     borderRadius: 100,
