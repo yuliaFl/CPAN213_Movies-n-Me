@@ -14,7 +14,7 @@ function Seperator() {
   return <View style={styles.seperator}></View>;
 }
 
-function LogingForm() {
+export default function Login({ navigation }) {
   const [showModal, setShowModal] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const [state, setState] = useState({
@@ -25,6 +25,10 @@ function LogingForm() {
     password: '',
   });
 
+  function nav(){
+    setShowModal(!showModal)
+    navigation.navigate('Home')
+   }
   const inputValidator = () => {
     if (state.email == '') {
       setState({ emailError: 'Email Cannot be empty' });
@@ -85,7 +89,7 @@ function LogingForm() {
               <View style={styles.modalBtnRow}>
                 <TouchableOpacity
                   style={styles.modalButton}
-                  onPress={() => navigation.navigate('Home')}>
+                  onPress={nav}>
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
                 <Seperator />
@@ -122,8 +126,6 @@ function LogingForm() {
     </NativeBaseProvider>
   );
 }
-
-export default LogingForm;
 
 const styles = StyleSheet.create({
   Screen: {

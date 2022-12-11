@@ -14,8 +14,11 @@ import {
 function Seperator() {
   return <View style={styles.seperator}></View>;
 }
-
-function RegistrationForm() {
+export default function Register({ navigation }) {
+  function nav(){
+    setShowModal(!showModal)
+    navigation.navigate('Home')
+   }
   const [state, setState] = useState({
     email: '',
     userName: '',
@@ -90,7 +93,7 @@ function RegistrationForm() {
               <View style={styles.modalBtnRow}>
                 <TouchableOpacity
                   style={styles.modalButton}
-                  onPress={() => navigation.navigate("Home")}
+                  onPress={nav}
                 >
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
@@ -230,5 +233,3 @@ const styles = StyleSheet.create({
     margin: 6,
   },
 });
-
-export default RegistrationForm;
