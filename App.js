@@ -30,6 +30,13 @@ function WatchScreen({ navigation }) {
     </Provider>
   );
 }
+function SearchScreen({ navigation }) {
+  return(
+    <Provider store={store}>
+    <MovieSearch/>
+    </Provider>
+  )
+}
 
 function MyStack() {
   var options = {
@@ -46,7 +53,7 @@ function MyStack() {
       <Stack.Screen name="Home" component={HomePage} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="MoviePage" component={MovieScreen} />
-      <Stack.Screen name="MovieSearch" component={MovieSearch} />
+      <Stack.Screen name="MovieSearch" component={SearchScreen} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name ="WatchList" component={WatchScreen}/>
       </Stack.Group>
