@@ -84,7 +84,7 @@ const MovieSearch = ({
     // console.log("Data Retrived and Assigned")
   }
   return (
-    <View style={styles.container}>
+    <View style={styles.Screen}>
       <h1>Search:</h1>
       <TextInput
         style={styles.input}
@@ -124,19 +124,22 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch);
 
 const styles = StyleSheet.create({
-  container: {
+  Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "#2B2882",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 1,
     padding: 10,
+    borderWidth: 1,
+    borderRadius: 12,
+    backgroundColor: '#000000',
+    placeholderTextColor: '#6D5C82',
   },
   seperator: { 
     height:10, 

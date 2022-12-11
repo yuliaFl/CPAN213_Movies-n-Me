@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
   },
   input_container: {
     backgroundColor: '#000000',
+    placeholderTextColor: '#6D5C82',
     borderRadius: 12,
     margin: 10,
     shadowRadius: 2,
