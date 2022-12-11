@@ -104,23 +104,16 @@ const MovieSearch = ({ addProductToCart, removeProductFromCart }) => {
       <Text style={styles.movieText}>Plot: {movie.Plot}</Text>
       <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
 
-      <View style={styles.buttonRow}>
+      <View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => addProductToCart(movie)}
         >
           <Text style={styles.buttonText}> Add to Watch List </Text>
         </TouchableOpacity>
-        <Seperator /><Seperator /><Seperator />
-        <TouchableOpacity
-          style={styles.button2}
-          onPress={() => navigation.navigate("WatchList")}
-        >
-          <Text style={styles.buttonText2}> Open Watch List </Text>
-        </TouchableOpacity>
+        {/* <Seperator /><Seperator /><Seperator /> */}
       </View>
 
-      {/* <Button title="Add Movie to Watch List" onPress={() => addProductToCart(movie)}/> */}
     </View>
   );
 };
@@ -161,6 +154,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: "90%",
     marginTop: 12,
+    marginBottom: 12,
     padding: 12,
     borderWidth: 1,
     borderRadius: 12,
@@ -171,51 +165,30 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#E63169",
     display: "flex",
-    height: 60,
-    width: "45%",
+    height: 50,
+    width: "100%",
     borderRadius: 100,
     marginTop: 20,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "right",
     shadowColor: "hotpink",
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
+    margin: 4
   },
-  button2: {
-    backgroundColor: "#F9BC08",
-    display: "flex",
-    height: 60,
-    width: "45%",
-    borderRadius: 100,
-    marginTop: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "goldenrod",
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
-    padding: 4
-  },
-  buttonText2: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#000000",
-    textAlign: "center",
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    paddingLeft: 4,
-    marginBottom: 20,
-  },
+  
   movieTitle: {
     color: "#F2E5CE",
     fontSize: 14,
     textAlign: "center",
+    marginBottom: 8,
+    fontWeight: 'bold'
   },
   movieText: {
     color: "#F2E5CE",

@@ -17,27 +17,27 @@ function Seperator() {
 export default function Home({ navigation }) {
   return (
     <View style={styles.Screen}>
-      <h1>Search up a movie</h1>
-      <Button
-        title="Search for a movie"
-        onPress={() => navigation.navigate("MovieSearch")}
-        color="orange"
-      />
+      
+      <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("MovieSearch")}
+        >
+          <Text style={styles.buttonText}> Search for a Movie </Text>
+        </TouchableOpacity>
       <br />
       <Seperator />
       <Seperator />
 
-      <Text>OR. . . .</Text>
+      <Text style={styles.pageText} >OR. . . .</Text>
       <br />
       <Seperator />
-      <Seperator />
 
-      <h1>View a list of movies you want to watch</h1>
-      <Button
-        title="Watch List"
-        onPress={() => navigation.navigate("WatchList")}
-        color="orange"
-      />
+      <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("WatchList")}
+        >
+          <Text style={styles.buttonText}> View Watch List </Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -51,23 +51,36 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 10,
   },
+  pageText: {
+    margin: 40,
+    fontSize: 32,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#F9BC08',
+    backgroundColor: '#000000',
+    width: '107%',
+    height: 50,
+    shadowColor: "#000000",
+    shadowOpacity: 1,
+    shadowRadius: 20,
+  },
   button: {
-    backgroundColor: "#E63169",
+    backgroundColor: "#F9BC08",
     display: "flex",
-    height: 60,
+    height: 70,
     borderRadius: 100,
-    marginTop: 25,
+    marginTop: 18,
     justifyContent: "center",
     alignItems: "center",
     width: "75%",
-    shadowColor: "hotpink",
+    shadowColor: "goldenrod",
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
   buttonText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "white",
+    color: "#000000",
   },
   seperator: {
     margin: 6,
