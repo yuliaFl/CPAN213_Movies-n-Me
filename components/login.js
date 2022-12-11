@@ -88,6 +88,8 @@ function LogingForm() {
                   onPress={() => navigation.navigate('Home')}>
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
+                <Seperator />
+                <Seperator />
 
                 <TouchableOpacity
                   style={styles.modalButton}
