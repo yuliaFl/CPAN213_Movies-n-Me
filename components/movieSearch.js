@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react";
 import {
   StyleSheet,
   Text,
@@ -8,12 +8,10 @@ import {
   TextInput,
   NativeModules,
   Image,
+  TouchableOpacity,
 } from "react-native";
-import { connect } from 'react-redux';
-import {
-  addToCart,
-  removeFromCart,
-} from '../redux/actions/index';
+import { connect } from "react-redux";
+import { addToCart, removeFromCart } from "../redux/actions/index";
 
 // function MovieSearchPage({ navigation }) {
 //   return (
@@ -25,86 +23,107 @@ import {
 
 //       <Stack.Screen name="MovieSearch" component={MovieSearchPage} />
 
-const MovieSearch = ({
-  addProductToCart,
-  removeProductFromCart,
-}) => {
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
+const MovieSearch = ({ addProductToCart, removeProductFromCart }) => {
   const emptyMovie = {
-    "Title": " ",
-    "Year": " ",
-    "Rated": " ",
-    "Released": " ",
-    "Runtime": " ",
-    "Genre": " ",
-    "Director": " ",
-    "Writer": " ",
-    "Actors": " ",
-    "Plot": " ",
-    "Language": " ",
-    "Country": " ",
-    "Awards": " ",
-    "Poster": " ",
-    "Ratings": [
+    Title: " ",
+    Year: " ",
+    Rated: " ",
+    Released: " ",
+    Runtime: " ",
+    Genre: " ",
+    Director: " ",
+    Writer: " ",
+    Actors: " ",
+    Plot: " ",
+    Language: " ",
+    Country: " ",
+    Awards: " ",
+    Poster: " ",
+    Ratings: [
       {
-        "Source": "Internet Movie Database",
-        "Value": " "
+        Source: "Internet Movie Database",
+        Value: " ",
       },
       {
-        "Source": "Rotten Tomatoes",
-        "Value": " "
+        Source: "Rotten Tomatoes",
+        Value: " ",
       },
       {
-        "Source": "Metacritic",
-        "Value": " "
-      }
+        Source: "Metacritic",
+        Value: " ",
+      },
     ],
-    "Metascore": " ",
-    "imdbRating": " ",
-    "imdbVotes": " ",
-    "imdbID": " ",
-    "Type": " ",
-    "DVD": " ",
-    "BoxOffice": " ",
-    "Production": " ",
-    "Website": " ",
-    "Response": "True"
-  }
+    Metascore: " ",
+    imdbRating: " ",
+    imdbVotes: " ",
+    imdbID: " ",
+    Type: " ",
+    DVD: " ",
+    BoxOffice: " ",
+    Production: " ",
+    Website: " ",
+    Response: "True",
+  };
   const [movie, setMovie] = React.useState(emptyMovie);
   const searchMovie = (name) => {
-    fetch("https://www.omdbapi.com/?apikey=a4f1f727&t="+name) //API
+    fetch("https://www.omdbapi.com/?apikey=a4f1f727&t=" + name) //API
       .then((response) => response.json())
-      .then((json) => { 
+      .then((json) => {
         if (json.Response == "True") {
-          setMovie(json); 
+          setMovie(json);
         } else {
           setMovie(emptyMovie);
         }
       })
-      .catch((err) => { console.log(err.message); });
+      .catch((err) => {
+        console.log(err.message);
+      });
     // console.log("Data Retrived and Assigned")
-  }
+  };
   return (
     <View style={styles.Screen}>
-      <h1>Search:</h1>
+      <Text style={styles.title}>Search for any movie here</Text>
       <TextInput
         style={styles.input}
-        placeholder="Name" //Enter Person Name Here
-        placeholderTextColor={`#707070`}
+        placeholder="Search movie name. . ."
         onChangeText={searchMovie}
       />
 
       <View style={styles.seperator}></View>
 
-      <Text>{movie.Title}</Text>
-      <Image style={{width:300,height:434}} source={{uri: movie.Poster}}/>
-      <Text>Year: {movie.Year}</Text>
-      <Text>Plot: {movie.Plot}</Text>
-      <Text>Genre: {movie.Genre}</Text>
+      <Text style={styles.movieTitle}>{movie.Title}</Text>
+      <Image
+        style={{ width: 100, height: 200, marginBottom: 10 }}
+        source={{ uri: movie.Poster }}
+      />
+      <Text style={styles.movieText}>Year: {movie.Year}</Text>
+      <Text style={styles.movieText}>Plot: {movie.Plot}</Text>
+      <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
 
-      <Button title="Add Movie to Watch List" onPress={() => addProductToCart(movie)}/>
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => addProductToCart(movie)}
+        >
+          <Text style={styles.buttonText}> Add to Watch List </Text>
+        </TouchableOpacity>
+        <Seperator /><Seperator /><Seperator />
+        <TouchableOpacity
+          style={styles.button2}
+          onPress={() => navigation.navigate("WatchList")}
+        >
+          <Text style={styles.buttonText2}> Open Watch List </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* <Button title="Add Movie to Watch List" onPress={() => addProductToCart(movie)}/> */}
     </View>
-  )
-}
+  );
+};
 
 // Needed to convert redux state to props for the component
 const mapStateToProps = (state) => {
@@ -132,16 +151,79 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 10,
   },
+  title: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#F9BC08",
+    textAlign: "center",
+  },
   input: {
-    height: 40,
-    margin: 12,
-    padding: 10,
+    height: 50,
+    width: "90%",
+    marginTop: 12,
+    padding: 12,
     borderWidth: 1,
     borderRadius: 12,
-    backgroundColor: '#000000',
-    placeholderTextColor: '#6D5C82',
+    backgroundColor: "#000000",
+    placeholderTextColor: "#6D5C82",
+    color: "#E63169",
   },
-  seperator: { 
-    height:10, 
+  button: {
+    backgroundColor: "#E63169",
+    display: "flex",
+    height: 60,
+    width: "45%",
+    borderRadius: 100,
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "hotpink",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  buttonText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+  },
+  button2: {
+    backgroundColor: "#F9BC08",
+    display: "flex",
+    height: 60,
+    width: "45%",
+    borderRadius: 100,
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "goldenrod",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    padding: 4
+  },
+  buttonText2: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#000000",
+    textAlign: "center",
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    paddingLeft: 4,
+    marginBottom: 20,
+  },
+  movieTitle: {
+    color: "#F2E5CE",
+    fontSize: 14,
+    textAlign: "center",
+  },
+  movieText: {
+    color: "#F2E5CE",
+    fontSize: 12,
+    textAlign: "center",
+    marginBottom: 4,
+  },
+  seperator: {
+    width: 6
   },
 });

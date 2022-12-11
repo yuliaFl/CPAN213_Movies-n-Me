@@ -41,9 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 10,
   },
-  seperator: {
-    margin: 6,
-  },
   button:{
     backgroundColor: '#E63169',
     display: 'flex',
@@ -61,5 +58,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
+  },
+  seperator: {
+    margin: 6,
   },
 });
