@@ -105,12 +105,6 @@ const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
           <Text style={styles.buttonText}> Add to Watch List </Text>
         </TouchableOpacity>
         <Seperator /><Seperator /><Seperator />
-        <TouchableOpacity
-          style={styles.button2}
-          onPress={() => navigation2.navigate("WatchList")}
-        >
-          <Text style={styles.buttonText2}> Open Watch List </Text>
-        </TouchableOpacity>
       </View>
 
     </View>

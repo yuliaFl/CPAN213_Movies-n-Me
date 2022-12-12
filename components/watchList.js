@@ -7,18 +7,25 @@ import {
 import { Provider } from 'react-redux'
 import store from '../redux/store/index';
 
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
 var navigation2
 const WatchListPage = ({
   movieList,
 }) => {  
   const renderMovieList = ({ item }) => (
     <View>
-      <Text>{item.Title}</Text>
-      <Text>{item.Year}</Text>
-      <Text>{item.Plot}</Text>
-      <Button title="Go to" onPress={() => navigation2.navigate("MoviePage", item.imdbID)} />
+      <Text style={styles.movieTitle}>{item.Title}</Text>
+      {/* <Text>{item.Year}</Text>
+      <Text>{item.Plot}</Text> */}
+      <View style={styles.buttons}>
+      <Button title="View Movie" onPress={() => navigation2.navigate("MoviePage", item.imdbID)} />
+      <Button title="Remove from list" />
+      </View>
       {/* <Button title="Remove from WatchList" onPress={() => removeProductFromCart(item)} /> */}
-      <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
+      <View style={{ borderBottomColor: '#000000', borderWidth: 2, margin: 5 }} />
     </View>
   );
   // const renderMovieList = ({ item }) => {
@@ -36,10 +43,10 @@ const WatchListPage = ({
   // };
 
   return (
-    <View>
-      {/* <View style={{ margin: 5 }} /> */}
-      <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Your WatchList:</Text>
-      <FlatList data={movieList} renderItem={renderMovieList} />
+    <View style={styles.Screen}>
+      <Text style={styles.title}>Your WatchList:</Text>
+      <FlatList style={styles.list} data={movieList} 
+      renderItem={renderMovieList} />
     </View>
   );
 };
@@ -67,6 +74,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: '#E63169',
+    marginTop: 10
+  },
+  movieTitle: {
+    color: "#6D5C82",
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 8,
+    fontWeight: 'bold'
+  },
+  list: {
+    alignContent: 'stretch', 
+    width: '100%',
+  },
+  buttons: {
+    flexDirection: 'row'
   },
   seperator: {
     margin: 6,
