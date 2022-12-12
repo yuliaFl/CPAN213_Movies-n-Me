@@ -70,10 +70,10 @@ const mapDispatchToProps = (dispatch) => {
 const styles = StyleSheet.create({
   Screen: {
     flex: 1,
-    flexDirection:"column",
-    backgroundColor: "#fff",
+    flexDirection: "column",
+    backgroundColor: "#2B2882",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 });

@@ -108,7 +108,7 @@ const MovieSearchPage = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
       <Text style={styles.movieText}>Plot: {movie.Plot}   </Text>
       <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
 
-      <View>
+      <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => addMovieToWatchList(movie)}
@@ -118,11 +118,11 @@ const MovieSearchPage = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
         <Seperator/><Seperator/>
         <TouchableOpacity
           // style={styles.button2} //button2 styles doesn't exist anymore soooo
-          style={styles.button}
+          style={styles.button2}
           onPress={() => navigation2.navigate("WatchList")}
         >
           {/* <Text style={styles.buttonText2}> Open Watch List </Text>  */} {/* same here with buttonText2 */}
-          <Text style={styles.buttonText}> Open Watch List </Text>
+          <Text style={styles.buttonText2}> Open Watch List </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -174,8 +174,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#E63169",
     display: "flex",
-    height: 50,
-    width: "100%",
+    height: 60,
+    width: "45%",
     borderRadius: 100,
     marginTop: 20,
     justifyContent: "center",
@@ -191,26 +191,30 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 4
   },
-  // button2: {
-  //   backgroundColor: "#F9BC08",
-  //   display: "flex",
-  //   height: 60,
-  //   width: "45%",
-  //   borderRadius: 100,
-  //   marginTop: 20,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   shadowColor: "goldenrod",
-  //   shadowOpacity: 0.9,
-  //   shadowRadius: 10,
-  //   padding: 4
-  // },
-  // buttonText2: {
-  //   fontSize: 14,
-  //   fontWeight: "bold",
-  //   color: "#000000",
-  //   textAlign: "center",
-  // },
+  button2: {
+    backgroundColor: "#F9BC08",
+    display: "flex",
+    height: 60,
+    width: "45%",
+    borderRadius: 100,
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "goldenrod",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    padding: 4
+  },
+  buttonText2: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000000",
+    textAlign: "center",
+  },
+  buttons: {
+    flexDirection: 'row',
+    marginLeft: 18
+  },
   movieTitle: {
     color: "#F2E5CE",
     fontSize: 14,

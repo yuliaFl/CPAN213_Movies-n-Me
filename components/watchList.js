@@ -23,22 +23,17 @@ const WatchListPage = ({ movieList }) => {
       {/* <Text>{item.Year}</Text>
       <Text>{item.Plot}</Text> */}
       <View style={styles.buttons}>
-      <Button title="View Movie" onPress={() => navigation2.navigate("MoviePage", item.imdbID)} />
+      <Button title="View Movie" onPress={() => navigation2.navigate("MoviePage", item)} />
       <Button title="Remove from list" />
       </View>
-      {/* <Button title="Remove from WatchList" onPress={() => removeProductFromCart(item)} /> */}
       <View style={{ borderBottomColor: '#000000', borderWidth: 2, margin: 5 }} />
-      <Text>{item.Title}</Text>
-      <Text>{item.Year}</Text>
-      <Text>{item.Plot}</Text>
-      <Button title="Go to" onPress={() => navigation2.navigate("MoviePage", item)} />
-      {/* Have remove from watch list button? /> */}
+
       <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
     </View>
   );
   return (
-    <View>
-      <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Your WatchList:</Text>
+    <View style={styles.Screen}>
+      <Text style={styles.title}>Your WatchList:</Text>
       <View style={{ margin: 5 }}/>
       <FlatList data={movieList} renderItem={renderMovieList}/>
     </View>
@@ -68,11 +63,12 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   movieTitle: {
-    color: "#6D5C82",
-    fontSize: 16,
+    color: "#F9BC08",
+    fontSize: 20,
     textAlign: "center",
     marginBottom: 8,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    backgroundColor: '#000000'
   },
   list: {
     alignContent: 'stretch', 
