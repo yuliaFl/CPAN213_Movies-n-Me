@@ -1,15 +1,15 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../actionTypes/index';
+import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST } from '../actionTypes/index';
 
-export const addToCart = (product) => ({
-  type: ADD_TO_CART,
+export const addToWatchList = (movie) => ({
+  type: ADD_TO_WATCHLIST,
   payload: {
-    product
+    movie
   }
 });
 
-export const removeFromCart = (product) => ({
-  type: REMOVE_FROM_CART,
+export const removeFromWatchList = (movie) => ({
+  type: REMOVE_FROM_WATCHLIST,
   payload: {
-    product
+    movie
   }
 });
