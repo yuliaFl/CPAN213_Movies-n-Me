@@ -1,24 +1,22 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   StyleSheet,
   Text,
   View,
+  Image,
   Button,
   FlatList,
   TextInput,
   NativeModules,
-} from "react-native";
-import { connect } from 'react-redux';
-import {
-  addToCart,
-  removeFromCart,
-} from '../redux/actions/index';
-import { Provider } from 'react-redux'
+} from 'react-native';
+import { connect, Provider } from 'react-redux'; //npm install --save react-redux
 import store from '../redux/store/index';
+import { addToWatchList, removeFromWatchList } from '../redux/actions/index';
+
 
 
 var route2
-export default function MoviePage({ route, navigation }) {
+export default function MoviePage({ navigation, route }) {
   route2 = route
   const MovieSearchConnect = (
     connect(mapStateToProps, mapDispatchToProps)(MovieView)
@@ -29,70 +27,30 @@ export default function MoviePage({ route, navigation }) {
     </Provider>
   );
 };
-const MovieView = ({
-  addProductToCart,
-  removeProductFromCart,
-}) => {
-  console.log(route2.params)
-  const emptyMovie = {
-    "Title": " ",
-    "Year": " ",
-    "Rated": " ",
-    "Released": " ",
-    "Runtime": " ",
-    "Genre": " ",
-    "Director": " ",
-    "Writer": " ",
-    "Actors": " ",
-    "Plot": " ",
-    "Language": " ",
-    "Country": " ",
-    "Awards": " ",
-    "Poster": " ",
-    "Ratings": [
-      {
-        "Source": "Internet Movie Database",
-        "Value": " "
-      },
-      {
-        "Source": "Rotten Tomatoes",
-        "Value": " "
-      },
-      {
-        "Source": "Metacritic",
-        "Value": " "
-      }
-    ],
-    "Metascore": " ",
-    "imdbRating": " ",
-    "imdbVotes": " ",
-    "imdbID": " ",
-    "Type": " ",
-    "DVD": " ",
-    "BoxOffice": " ",
-    "Production": " ",
-    "Website": " ",
-    "Response": "True"
-  }
-  const [movie, setMovie] = React.useState(emptyMovie);
+const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
+  const movie = route2.params;
+  const [inWatchList, setInWatchList] = React.useState(true);
   return (
     <View style={styles.Screen}>
       <Text><h1>{movie.Title}</h1></Text>
-      {/* <Image style={{width:300,height:434}} source={{uri: movie.Poster}}/> */}
+      <Image
+        style={{ width: 100, height: 200, marginBottom: 10 }}
+        source={{ uri: movie.Poster }}
+      />
       <Text>Year: {movie.Year}</Text>
       <Text>Plot: {movie.Plot}</Text>
-      <Text>Genre: {movie.Genre}</Text>
-
-      <Button title="Add Movie to Watch List" onPress={() => addProductToCart(movie)}/>
+      <Text>Genres: {movie.Genre}</Text>
+      
+      {
+        inWatchList ? (
+          <Button title="Remove from Watch List" onPress={() => (removeMovieFromWatchList(movie), setInWatchList(false))}/>
+        ) : (
+          <Button title="Add to Watch List" onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}/>
+        )
+      }
     </View>
-  )
-}
-
-// export default function App() {
-//   return (
-// <h1>HOME</h1>
-//   )
-// }
+  );
+};
 
 // Needed to convert redux state to props for the component
 const mapStateToProps = (state) => {
@@ -104,8 +62,8 @@ const mapStateToProps = (state) => {
 // Needed to convert redux actions to props for the component
 const mapDispatchToProps = (dispatch) => {
   return {
-    addProductToCart: (product) => dispatch(addToCart(product)),
-    removeProductFromCart: (product) => dispatch(removeFromCart(product)),
+    addMovieToWatchList: (movie) => dispatch(addToWatchList(movie)),
+    removeMovieFromWatchList: (movie) => dispatch(removeFromWatchList(movie)),
   };
 };
 

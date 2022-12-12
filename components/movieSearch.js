@@ -10,17 +10,27 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/actions/index";
-import { Provider } from 'react-redux'
-import store from '../redux/store/index';
+import { connect, Provider } from "react-redux"; //npm install --save react-redux
+import store from "../redux/store/index";
+import { addToWatchList, removeFromWatchList } from "../redux/actions/index";
 
 function Seperator() {
-  return <View style={styles.seperator}></View>;
+  return <View style={styles.seperator}/>;
 }
 
 var navigation2
-const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
+export default function MovieSearch({ navigation }) {
+  navigation2 = navigation
+  const MovieSearchConnect = (
+    connect(mapStateToProps, mapDispatchToProps)(MovieSearchPage)
+  )
+  return (
+    <Provider store={store}>
+      <MovieSearchConnect/>
+    </Provider>
+  );
+};
+const MovieSearchPage = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
   const emptyMovie = {
     Title: " ",
     Year: " ",
@@ -63,7 +73,7 @@ const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
   };
   const [movie, setMovie] = React.useState(emptyMovie);
   const searchMovie = (name) => {
-    fetch("https://www.omdbapi.com/?apikey=a4f1f727&t=" + name) //API
+    fetch("https://www.omdbapi.com/?apikey=a4f1f727&t="+name) //API
       .then((response) => response.json())
       .then((json) => {
         if (json.Response == "True") {
@@ -77,6 +87,7 @@ const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
       });
     // console.log("Data Retrived and Assigned")
   };
+  const [inWatchList, setInWatchList] = React.useState(false); //If we don't use the add/remove toggle we don't need this
   return (
     <View style={styles.Screen}>
       <Text style={styles.title}>Search for any movie here</Text>
@@ -86,33 +97,51 @@ const MovieSearchPage = ({ addProductToCart, removeProductFromCart }) => {
         onChangeText={searchMovie}
       />
 
-      <View style={styles.seperator}></View>
+      <View style={styles.seperator}/>
 
       <Text style={styles.movieTitle}>{movie.Title}</Text>
       <Image
         style={{ width: 100, height: 200, marginBottom: 10 }}
         source={{ uri: movie.Poster }}
       />
-      <Text style={styles.movieText}>Year: {movie.Year}</Text>
-      <Text style={styles.movieText}>Plot: {movie.Plot}</Text>
+      <Text style={styles.movieText}>Year: {movie.Year}   </Text>
+      <Text style={styles.movieText}>Plot: {movie.Plot}   </Text>
       <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
 
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => addProductToCart(movie)}
+          onPress={() => addMovieToWatchList(movie)}
         >
           <Text style={styles.buttonText}> Add to Watch List </Text>
         </TouchableOpacity>
-        <Seperator /><Seperator /><Seperator />
+        {/* {
+          !inWatchList ? ( // You *could* use this, but we really don't need to so idk
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}
+            >
+              <Text style={styles.buttonText}> Add to Watch List </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => (removeMovieFromWatchList(movie), setInWatchList(false))}
+            >
+              <Text style={styles.buttonText}> Remove from Watch List </Text>
+            </TouchableOpacity>
+          )
+        } */}
+        <Seperator/><Seperator/><Seperator/>
         <TouchableOpacity
-          style={styles.button2}
+          // style={styles.button2} //button2 styles doesn't exist anymore soooo
+          style={styles.button}
           onPress={() => navigation2.navigate("WatchList")}
         >
-          <Text style={styles.buttonText2}> Open Watch List </Text>
+          {/* <Text style={styles.buttonText2}> Open Watch List </Text>  */} {/* same here with buttonText2 */}
+          <Text style={styles.buttonText}> Open Watch List </Text>
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -127,22 +156,9 @@ const mapStateToProps = (state) => {
 // Needed to convert redux actions to props for the component
 const mapDispatchToProps = (dispatch) => {
   return {
-    addProductToCart: (product) => dispatch(addToCart(product)),
-    removeProductFromCart: (product) => dispatch(removeFromCart(product)),
+    addMovieToWatchList: (movie) => dispatch(addToWatchList(movie)),
+    removeMovieFromWatchList: (movie) => dispatch(removeFromWatchList(movie)),
   };
-};
-
-// export default connect(mapStateToProps, mapDispatchToProps)(MovieSearch);
-export default function MovieSearch({ navigation }) {
-  navigation2 = navigation
-  const MovieSearchConnect = (
-    connect(mapStateToProps, mapDispatchToProps)(MovieSearchPage)
-  )
-  return (
-    <Provider store={store}>
-      <MovieSearchConnect/>
-    </Provider>
-  );
 };
 
 const styles = StyleSheet.create({
@@ -192,7 +208,26 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 4
   },
-  
+  // button2: {
+  //   backgroundColor: "#F9BC08",
+  //   display: "flex",
+  //   height: 60,
+  //   width: "45%",
+  //   borderRadius: 100,
+  //   marginTop: 20,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   shadowColor: "goldenrod",
+  //   shadowOpacity: 0.9,
+  //   shadowRadius: 10,
+  //   padding: 4
+  // },
+  // buttonText2: {
+  //   fontSize: 14,
+  //   fontWeight: "bold",
+  //   color: "#000000",
+  //   textAlign: "center",
+  // },
   movieTitle: {
     color: "#F2E5CE",
     fontSize: 14,
