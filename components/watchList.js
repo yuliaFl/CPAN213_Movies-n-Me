@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 30,
-    color: '#E63169',
+    color: '#F748B7',
     marginTop: 10
   },
   movieTitle: {

@@ -148,13 +148,13 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: "bold",
     color: "#F9BC08",
     textAlign: "center",
@@ -169,10 +169,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#000000",
     placeholderTextColor: "#6D5C82",
-    color: "#E63169",
+    color: "#F748B7",
   },
   button: {
-    backgroundColor: "#E63169",
+    backgroundColor: "#F748B7",
     display: "flex",
     height: 60,
     width: "45%",
@@ -216,14 +216,14 @@ const styles = StyleSheet.create({
     marginLeft: 18
   },
   movieTitle: {
-    color: "#F2E5CE",
+    color: "#E3D9FF",
     fontSize: 14,
     textAlign: "center",
     marginBottom: 8,
     fontWeight: 'bold'
   },
   movieText: {
-    color: "#F2E5CE",
+    color: "#E3D9FF",
     fontSize: 12,
     textAlign: "center",
     marginBottom: 4,

@@ -36,9 +36,7 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
   const [inWatchList, setInWatchList] = React.useState(true);
   return (
     <View style={styles.Screen}>
-      <Text>
-        <h1>{movie.Title}</h1>
-      </Text>
+      <Text style={styles.movieTitle}>{movie.Title}</Text>
       <Image
         style={{ width: 100, height: 200, marginBottom: 10 }}
         source={{ uri: movie.Poster }}
@@ -86,26 +84,35 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
   },
+  movieTitle: {
+    color: "#E3D9FF",
+    fontSize: 30,
+    textAlign: "center",
+    marginBottom: 12,
+    fontWeight: 'bold'
+  },
   movieText: {
-    color: "#F2E5CE",
-    fontSize: 12,
+    color: "#E3D9FF",
+    fontSize: 14,
     textAlign: "center",
     marginBottom: 4,
+    marginLeft: 6,
+    marginRight: 6
   },
   button:{
-    backgroundColor: '#E63169',
+    backgroundColor: '#F748B7',
     display: 'flex',
     height: 60,
     borderRadius: 50,
-    marginTop: 10,
+    marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '50%',
+    width: '70%',
     shadowColor: 'hotpink',
     shadowOpacity: 0.9,
     shadowRadius: 10,

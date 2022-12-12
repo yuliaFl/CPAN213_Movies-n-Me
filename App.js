@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 
 function MyStack() {
   var options = {
-    headerStyle: { backgroundColor: '#2B2882' },
+    headerStyle: { backgroundColor: '#262361' },
     headerTintColor: 'white',
     headerTitleAlign: 'center',
     headerTitleStyle: { fontWeight: 'bold' },
