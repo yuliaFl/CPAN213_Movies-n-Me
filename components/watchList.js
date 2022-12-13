@@ -8,8 +8,8 @@ import { addToWatchList, removeFromWatchList } from '../redux/actions/index';
 var navigation2
 export default function WatchList({ navigation }) { //name is now different!!!
   navigation2 = navigation
-  const WatchListConnect = (connect(
-    mapStateToProps,mapDispatchToProps)(WatchListPage)
+  const WatchListConnect = (
+    connect(mapStateToProps,mapDispatchToProps)(WatchListPage)
   )
   return (
     <Provider store={store}>
@@ -40,7 +40,7 @@ const WatchListPage = ({ movieList,removeMovieFromWatchList }) => {
               </Text>
             <View style={styles.modalBtnRow}>
                 <TouchableOpacity
-                style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(movie), setInWatchList(false))}>
+                style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(item), setInWatchList(false))}>
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
         
