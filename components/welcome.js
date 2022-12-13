@@ -42,7 +42,7 @@ export default function Welcome({ navigation }) {
         <LogoFadeIn>
           <Image
             style={{ width: 250, height: 250 }}
-            source={require("../logo/logo_proto2.JPG")}
+            source={require("../logo/logo_final.png")}
             alt="Logo"
           />
         </LogoFadeIn>
@@ -55,8 +55,8 @@ export default function Welcome({ navigation }) {
         progress={progValue}
         max={100}
         min={0}
-        barColor={"white"}
-        borderColor={"#2B2882"}
+        barColor={"#E3D9FF"}
+        borderColor={"#262361"}
         borderWidth={6}
       />
     </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,

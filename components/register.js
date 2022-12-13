@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 32,
-    color: '#F2E5CE',
+    color: '#E3D9FF',
     marginBottom: 25,
   },
   input_container: {
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   button: {
-    backgroundColor: '#E63169',
+    backgroundColor: '#F748B7',
     display: 'flex',
     height: 60,
     borderRadius: 100,
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#F2E5CE",
+    shadowColor: "#E3D9FF",
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
@@ -212,20 +212,20 @@ const styles = StyleSheet.create({
   modalBtnText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#2B2882",
+    color: "#262361",
   },
   modalText: {
     margin: 15,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#E63169",
+    color: "#F748B7",
   },
   modalView: {
     width: "80%",
     height: 180,
     borderWidth: 3,
     borderRadius: 15,
-    borderColor: "#E63169",
+    borderColor: "#F748B7",
     padding: 15,
     alignItems: "center",
     backgroundColor: "#000000",

@@ -6,7 +6,7 @@ export default function Navigation({ navigation }) {
     <View style={styles.Screen}>
       <Image
             style={{ width: 180, height: 180 }}
-            source={require("../logo/logo_proto2.JPG")}
+            source={require("../logo/logo_final.png")}
             alt="Logo"
           />
 
@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
   Screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#2B2882",
+    backgroundColor: "#262361",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
   },
   button:{
-    backgroundColor: '#E63169',
+    backgroundColor: '#F748B7',
     display: 'flex',
     height: 60,
     borderRadius: 100,
