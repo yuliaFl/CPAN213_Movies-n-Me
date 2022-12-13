@@ -24,7 +24,7 @@ export default function Navigation({ navigation }) {
         
      <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('MovieSearch')}>
+        onPress={() => navigation.navigate('MovieSearchGuest')}>
         <Text style={styles.buttonText}> Browse As Guest </Text>
       </TouchableOpacity>
       

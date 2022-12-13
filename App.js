@@ -6,6 +6,7 @@ import HomePage from "./components/homePage";
 import Login from "./components/login";
 import MoviePage from "./components/moviePage"; 
 import MovieSearch from "./components/movieSearch";
+import MovieSearchGuest from "./components/movieSearchGuest";
 import Navigation from "./components/navigation";
 import Register from "./components/register";
 import WatchList from "./components/watchList";
@@ -29,6 +30,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="MoviePage" component={MoviePage} />
       <Stack.Screen name="MovieSearch" component={MovieSearch} />
+      <Stack.Screen name="MovieSearchGuest" component={MovieSearchGuest} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name ="WatchList" component={WatchList}/>
       </Stack.Group>
