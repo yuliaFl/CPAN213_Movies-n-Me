@@ -222,6 +222,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontWeight: 'bold'
   },
+  
   movieText: {
     color: "#F2E5CE",
     fontSize: 12,
@@ -231,4 +232,5 @@ const styles = StyleSheet.create({
   seperator: {
     width: 6
   },
+  
 });
