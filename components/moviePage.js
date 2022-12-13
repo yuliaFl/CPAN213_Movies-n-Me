@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -43,10 +44,39 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
       <Text>Year: {movie.Year}</Text>
       <Text>Plot: {movie.Plot}</Text>
       <Text>Genres: {movie.Genre}</Text>
+
+      <Modal
+          animationType="slide"
+          transparent={true}
+          visible={showModal}
+          onRequestClose={() => {
+            setShowModal(!showModal);
+          }}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>
+                Are you sure you want to Delete this Movie?
+              </Text>
+              <View style={styles.modalBtnRow}>
+                <TouchableOpacity
+                  style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(movie), setInWatchList(false))}>
+                  <Text style={styles.modalBtnText}> YES </Text>
+                </TouchableOpacity>
+             
+
+                <TouchableOpacity
+                  style={styles.modalButton}
+                  onPress={() => setShowModal(!showModal)}>
+                  <Text style={styles.modalBtnText}> NO </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       
       {
         inWatchList ? (
-          <Button title="Remove from Watch List" onPress={() => (removeMovieFromWatchList(movie), setInWatchList(false))}/>
+          <Button title="Remove from Watch List" onPress={() => setShowModal(!showModal)}/>
         ) : (
           <Button title="Add to Watch List" onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}/>
         )
@@ -78,5 +108,47 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
+  }, modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalButton: {
+    backgroundColor: '#F9BC08',
+    width: 70,
+    height: 50,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#F2E5CE',
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  modalBtnRow: {
+    marginTop: 10,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  modalBtnText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2B2882',
+  },
+  modalText: {
+    margin: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#E63169',
+  },
+  modalView: {
+    width: '80%',
+    height: 180,
+    borderWidth: 2,
+    borderRadius: 15,
+    borderColor: '#E63169',
+    padding: 15,
+    alignItems: 'center',
+    backgroundColor: '#000000',
   },
 });
