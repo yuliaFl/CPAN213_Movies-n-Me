@@ -27,6 +27,7 @@ export default function MoviePage({ navigation, route }) {
   return (
     <Provider store={store}>
       <MovieSearchConnect />
+      
     </Provider>
   );
 }
@@ -36,15 +37,20 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.Screen}>
-      <Text style={styles.movieTitle}>{movie.Title}</Text>
-      <Image
-        style={{ width: 100, height: 200, marginBottom: 10 }}
-        source={{ uri: movie.Poster }}
-      />
-      <Text>Year: {movie.Year}</Text>
-      <Text>Plot: {movie.Plot}</Text>
-      <Text>Genres: {movie.Genre}</Text>
+    <View style={styles.containerBase}>
+    
+      
+        <View style={styles.miniContainer}>
+        <Image
+        style={styles.image1} source={{ uri: movie.Poster }}
+        />
+        <Text style={styles.movieTitle}>{movie.Title}</Text>
+      <Text style={styles.text}>Year Released: {movie.Year}</Text>
+      <Text style={styles.text}>Plot: {movie.Plot}</Text>
+        <Text style={styles.text}>Genres: {movie.Genre}</Text>
+        </View>
 
+     </View>
       <Modal
           animationType="slide"
           transparent={true}
@@ -55,7 +61,7 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
           <View style={styles.modalContainer}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>
-                Are you sure you want to Delete this Movie?
+                Are you sure you want to Remove this Movie?
               </Text>
               <View style={styles.modalBtnRow}>
                 <TouchableOpacity
@@ -84,6 +90,7 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
     </View>
   );
 };
+
 
 // Needed to convert redux state to props for the component
 const mapStateToProps = (state) => {
@@ -150,5 +157,38 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center',
     backgroundColor: '#000000',
+  },//Big Box
+  containerBase: {
+    flex: 1,
+    borderWidth: 1,
+    margin: 20,
+    backgroundColor: '#000000',
+    borderRadius: 10,
+    borderColor: '#E63169',
+  },
+  //Small box for the content
+  miniContainer: {
+    flex: 1,
+    borderWidth: 1,
+    margin: 50,
+    color: 'darkblue'
+  },
+  text: {
+    color: 'white',
+    fontWeight: 'bold',
+
+  },
+  movieTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 25,
+  },
+  image1: {
+    width: 250,
+    height: 315,
+    marginBottom: 10
+  
+  
   },
 });
