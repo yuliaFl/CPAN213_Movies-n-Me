@@ -55,13 +55,26 @@ const WatchListPage = ({ movieList,removeMovieFromWatchList }) => {
         </Modal>
 
       <View style={styles.buttons}>
-      <Button title="View Movie" onPress={() => navigation2.navigate("MoviePage", item)} />
-        <Button title="Remove from list" onPress={() => setShowModal(!showModal)} />
+      {/* <Button title="View Movie" onPress={() => navigation2.navigate("MoviePage", item)} />
+        <Button title="" onPress={() => setShowModal(!showModal)} /> */}
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation2.navigate("MoviePage", item)}
+        >
+          <Text style={styles.buttonText}> View Movie </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setShowModal(!showModal)}
+        >
+          <Text style={styles.buttonText}> Remove from list </Text>
+        </TouchableOpacity>
       </View>
 
       <View style={{ borderBottomColor: '#000000', borderWidth: 2, margin: 5 }} />
 
-      <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} />
+      {/* <View style={{ borderBottomColor: 'black', borderWidth: 1, margin: 5 }} /> */}
     </View>
   );
   return (
@@ -103,7 +116,7 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: "#F9BC08",
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
     marginBottom: 8,
     fontWeight: 'bold',
@@ -115,6 +128,24 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row'
+  },
+  button: {
+    backgroundColor: "#E3D9FF",
+    display: "flex",
+    height: 40,
+    borderRadius: 100,
+    marginTop: 18,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "45%",
+    shadowColor: "white",
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  buttonText: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: "#262361",
   },
   seperator: {
     margin: 6,
