@@ -16,6 +16,10 @@ import { connect, Provider } from "react-redux"; //npm install --save react-redu
 import store from "../redux/store/index";
 import { addToWatchList, removeFromWatchList } from "../redux/actions/index";
 
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
 var route2;
 export default function MoviePage({ navigation, route }) {
   route2 = route;
@@ -46,19 +50,7 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
         <Text style={styles.movieText}>Year Released: {movie.Year}</Text>
         <Text style={styles.movieText}>Plot: {movie.Plot}</Text>
         <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
-        {/* </View> */}
 
-        {/* {inWatchList ? (
-          <Button
-            title="Remove from Watch List"
-            onPress={() => setShowModal(!showModal)}
-          />
-        ) : (
-          <Button
-            title="Add to Watch List"
-            onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}
-          />
-        )} */}
         {inWatchList ? (
         <TouchableOpacity
         style={styles.button}
@@ -96,7 +88,7 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
                 )}
               >
                 <Text style={styles.modalBtnText}> YES </Text>
-              </TouchableOpacity>
+              </TouchableOpacity><Seperator /><Seperator />
               <TouchableOpacity
                 style={styles.modalButton}
                 onPress={() => setShowModal(!showModal)}
@@ -190,12 +182,6 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingTop: 20
   },
-  //Small box for the content
-  // miniContainer: {
-  //   flex: 1,
-  //   borderWidth: 1,
-  //   margin: 50,
-  // },
   movieTitle: {
     color: "#E3D9FF",
     fontSize: 28,
@@ -218,6 +204,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 50,
     marginTop: 10,
+    marginLeft: 20,
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',

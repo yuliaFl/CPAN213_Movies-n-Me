@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +9,7 @@ import {
   TextInput,
   NativeModules,
   TouchableOpacity,
+  Animated,
 } from "react-native";
 
 function Seperator() {
@@ -15,29 +17,42 @@ function Seperator() {
 }
 
 export default function Home({ navigation }) {
+  const n = useRef(new Animated.Value(-100)).current;
+
+  useEffect(() => {
+    Animated.spring(n, { toValue: 5, duration: 25000 }).start();
+  }, [n]);
+
   return (
     <View style={styles.Screen}>
-      
+      <Animated.View>
+        <Animated.Image
+          style={{ width: 125, height: 125, left: n }}
+          source={require("../logo/logo_final.png")}
+
+        />
+      </Animated.View>
+
       <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("MovieSearch")}
-        >
-          <Text style={styles.buttonText}> Search for a Movie </Text>
-        </TouchableOpacity>
+        style={styles.button}
+        onPress={() => navigation.navigate("MovieSearch")}
+      >
+        <Text style={styles.buttonText}> Search for a Movie </Text>
+      </TouchableOpacity>
       <br />
       <Seperator />
       <Seperator />
 
-      <Text style={styles.pageText} >OR. . . .</Text>
+      <Text style={styles.pageText}>OR. . . .</Text>
       <br />
       <Seperator />
 
       <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("WatchList")}
-        >
-          <Text style={styles.buttonText}> View Watch List </Text>
-        </TouchableOpacity>
+        style={styles.button}
+        onPress={() => navigation.navigate("WatchList")}
+      >
+        <Text style={styles.buttonText}> View Watch List </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -54,11 +69,11 @@ const styles = StyleSheet.create({
   pageText: {
     margin: 40,
     fontSize: 32,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#F9BC08',
-    backgroundColor: '#000000',
-    width: '107%',
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#F9BC08",
+    backgroundColor: "#000000",
+    width: "107%",
     height: 50,
     shadowColor: "#000000",
     shadowOpacity: 1,

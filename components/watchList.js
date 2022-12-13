@@ -5,6 +5,10 @@ import store from '../redux/store/index';
 import { useState } from 'react';
 import { addToWatchList, removeFromWatchList } from '../redux/actions/index';
 
+function Seperator() {
+  return <View style={styles.seperator}></View>;
+}
+
 var navigation2
 export default function WatchList({ navigation }) { //name is now different!!!
   navigation2 = navigation
@@ -42,7 +46,7 @@ const WatchListPage = ({ movieList,removeMovieFromWatchList }) => {
                 <TouchableOpacity
                 style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(item), setInWatchList(false))}>
                   <Text style={styles.modalBtnText}> YES </Text>
-                </TouchableOpacity>
+                </TouchableOpacity><Seperator /><Seperator />
         
                 <TouchableOpacity
                   style={styles.modalButton}
@@ -63,7 +67,7 @@ const WatchListPage = ({ movieList,removeMovieFromWatchList }) => {
           onPress={() => navigation2.navigate("MoviePage", item)}
         >
           <Text style={styles.buttonText}> View Movie </Text>
-        </TouchableOpacity>
+        </TouchableOpacity><Seperator />
         <TouchableOpacity
           style={styles.button}
           onPress={() => setShowModal(!showModal)}
