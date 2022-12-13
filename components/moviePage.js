@@ -68,8 +68,6 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
                   style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(movie), setInWatchList(false))}>
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
-             
-
                 <TouchableOpacity
                   style={styles.modalButton}
                   onPress={() => setShowModal(!showModal)}>
@@ -115,7 +113,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
-  }, modalContainer: {
+  },
+  modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
