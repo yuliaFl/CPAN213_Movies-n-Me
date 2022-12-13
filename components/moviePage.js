@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useState } from 'react';
+import * as React from "react";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,11 +11,10 @@ import {
   Modal,
   TouchableOpacity,
   NativeModules,
-} from 'react-native';
-import { connect, Provider } from 'react-redux'; //npm install --save react-redux
-import store from '../redux/store/index';
-import { addToWatchList, removeFromWatchList } from '../redux/actions/index';
-
+} from "react-native";
+import { connect, Provider } from "react-redux"; //npm install --save react-redux
+import store from "../redux/store/index";
+import { addToWatchList, removeFromWatchList } from "../redux/actions/index";
 
 var route2;
 export default function MoviePage({ navigation, route }) {
@@ -27,7 +26,6 @@ export default function MoviePage({ navigation, route }) {
   return (
     <Provider store={store}>
       <MovieSearchConnect />
-      
     </Provider>
   );
 }
@@ -37,58 +35,81 @@ const MovieView = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.Screen}>
-    <View style={styles.containerBase}>
-    
-      
-        <View style={styles.miniContainer}>
-        <Image
-        style={styles.image1} source={{ uri: movie.Poster }}
-        />
+      <View style={styles.containerBase}>
+        {/* <View style={styles.miniContainer}> */}
         <Text style={styles.movieTitle}>{movie.Title}</Text>
-      <Text style={styles.text}>Year Released: {movie.Year}</Text>
-      <Text style={styles.text}>Plot: {movie.Plot}</Text>
-        <Text style={styles.text}>Genres: {movie.Genre}</Text>
-        </View>
+        <Image
+          style={{ width: 100, height: 200, marginBottom: 10, alignSelf: 'center', }}
+          source={{ uri: movie.Poster }}
+        />
 
-     </View>
+        <Text style={styles.movieText}>Year Released: {movie.Year}</Text>
+        <Text style={styles.movieText}>Plot: {movie.Plot}</Text>
+        <Text style={styles.movieText}>Genres: {movie.Genre}</Text>
+        {/* </View> */}
+
+        {/* {inWatchList ? (
+          <Button
+            title="Remove from Watch List"
+            onPress={() => setShowModal(!showModal)}
+          />
+        ) : (
+          <Button
+            title="Add to Watch List"
+            onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}
+          />
+        )} */}
+        {inWatchList ? (
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => setShowModal(!showModal)}>
+        <Text style={styles.buttonText}> Remove from watchlist </Text>
+      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}>
+        <Text style={styles.buttonText}> Add to watchlist </Text>
+      </TouchableOpacity>
+      )}
+      </View>
       <Modal
-          animationType="slide"
-          transparent={true}
-          visible={showModal}
-          onRequestClose={() => {
-            setShowModal(!showModal);
-          }}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>
-                Are you sure you want to Remove this Movie?
-              </Text>
-              <View style={styles.modalBtnRow}>
-                <TouchableOpacity
-                  style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(movie), setInWatchList(false))}>
-                  <Text style={styles.modalBtnText}> YES </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.modalButton}
-                  onPress={() => setShowModal(!showModal)}>
-                  <Text style={styles.modalBtnText}> NO </Text>
-                </TouchableOpacity>
-              </View>
+        animationType="slide"
+        transparent={true}
+        visible={showModal}
+        onRequestClose={() => {
+          setShowModal(!showModal);
+        }}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>
+              Are you sure you want to Remove this Movie?
+            </Text>
+            <View style={styles.modalBtnRow}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={() => (
+                  setShowModal(!showModal),
+                  removeMovieFromWatchList(movie),
+                  setInWatchList(false)
+                )}
+              >
+                <Text style={styles.modalBtnText}> YES </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={() => setShowModal(!showModal)}
+              >
+                <Text style={styles.modalBtnText}> NO </Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </Modal>
-      
-      {
-        inWatchList ? (
-          <Button title="Remove from Watch List" onPress={() => setShowModal(!showModal)}/>
-        ) : (
-          <Button title="Add to Watch List" onPress={() => (addMovieToWatchList(movie), setInWatchList(true))}/>
-        )
-      }
+        </View>
+      </Modal>
     </View>
   );
 };
-
 
 // Needed to convert redux state to props for the component
 const mapStateToProps = (state) => {
@@ -116,78 +137,98 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 22,
   },
   modalButton: {
-    backgroundColor: '#F9BC08',
+    backgroundColor: "#F9BC08",
     width: 70,
     height: 50,
     borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#F2E5CE',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#F2E5CE",
     shadowOpacity: 0.9,
     shadowRadius: 10,
   },
   modalBtnRow: {
     marginTop: 10,
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
   },
   modalBtnText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#2B2882',
+    fontWeight: "bold",
+    color: "#2B2882",
   },
   modalText: {
     margin: 15,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#E63169',
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#E63169",
   },
   modalView: {
-    width: '80%',
+    width: "80%",
     height: 180,
     borderWidth: 2,
     borderRadius: 15,
-    borderColor: '#E63169',
+    borderColor: "#E63169",
     padding: 15,
-    alignItems: 'center',
-    backgroundColor: '#000000',
-  },//Big Box
+    alignItems: "center",
+    backgroundColor: "#000000",
+  }, //Big Box
   containerBase: {
     flex: 1,
+    margin: 5,
     borderWidth: 1,
-    margin: 20,
-    backgroundColor: '#000000',
     borderRadius: 10,
-    borderColor: '#E63169',
+    backgroundColor: "#000000",
+    borderColor: "#E63169",
+    height: 160,
+    width: '100%',
+    padding: 6,
+    paddingTop: 20
   },
   //Small box for the content
-  miniContainer: {
-    flex: 1,
-    borderWidth: 1,
-    margin: 50,
-    color: 'darkblue'
-  },
-  text: {
-    color: 'white',
-    fontWeight: 'bold',
-
-  },
+  // miniContainer: {
+  //   flex: 1,
+  //   borderWidth: 1,
+  //   margin: 50,
+  // },
   movieTitle: {
+    color: "#E3D9FF",
+    fontSize: 28,
+    textAlign: "center",
+    marginBottom: 12,
+    fontWeight: "bold",
+  },
+  movieText: {
+    fontSize: 11,
+    color: "#E3D9FF",
     fontSize: 14,
+    textAlign: "center",
+    marginBottom: 5,
+    marginLeft: 6,
+    marginRight: 6,
+  },
+  button: {
+    backgroundColor: '#F748B7',
+    display: 'flex',
+    height: 40,
+    borderRadius: 50,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    padding: 5,
+    shadowColor: 'hotpink',
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  buttonText: {
+    fontSize: 17,
     fontWeight: 'bold',
     color: 'white',
-    fontSize: 25,
-  },
-  image1: {
-    width: 250,
-    height: 315,
-    marginBottom: 10
-  
-  
   },
 });

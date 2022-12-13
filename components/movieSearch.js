@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#F9BC08",
     textAlign: "center",
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     color: "#E3D9FF",
     fontSize: 12,
     textAlign: "center",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   seperator: {
     width: 6
