@@ -3,12 +3,13 @@ import { Text, View, StyleSheet, FlatList, Button, Modal, TouchableOpacity } fro
 import { connect, Provider } from 'react-redux'; //npm install --save react-redux
 import store from '../redux/store/index';
 import { useState } from 'react';
+import { addToWatchList, removeFromWatchList } from '../redux/actions/index';
 
 var navigation2
 export default function WatchList({ navigation }) { //name is now different!!!
   navigation2 = navigation
-  const WatchListConnect = (
-    connect(mapStateToProps)(WatchListPage)
+  const WatchListConnect = (connect(
+    mapStateToProps,mapDispatchToProps)(WatchListPage)
   )
   return (
     <Provider store={store}>
@@ -16,8 +17,9 @@ export default function WatchList({ navigation }) { //name is now different!!!
     </Provider>
   );
 };
-const WatchListPage = ({ movieList }) => {  
+const WatchListPage = ({ movieList,removeMovieFromWatchList }) => {  
   const [showModal, setShowModal] = useState(false);
+  const [inWatchList, setInWatchList] = React.useState(true);
   const renderMovieList = ({ item }) => (
     <View>
       <Text style={styles.movieTitle}>{item.Title}</Text>
@@ -37,11 +39,11 @@ const WatchListPage = ({ movieList }) => {
                 Remove Movie from Watch List?
               </Text>
             <View style={styles.modalBtnRow}>
-              {/* When the user presses Yes and No Nothing Happends*/}
                 <TouchableOpacity
-                style={styles.modalButton} onPress={() => setShowModal(!showModal)}>
+                style={styles.modalButton} onPress={() =>  (setShowModal(!showModal), removeMovieFromWatchList(movie), setInWatchList(false))}>
                   <Text style={styles.modalBtnText}> YES </Text>
                 </TouchableOpacity>
+        
                 <TouchableOpacity
                   style={styles.modalButton}
                   onPress={() => setShowModal(!showModal)}>
@@ -75,6 +77,12 @@ const WatchListPage = ({ movieList }) => {
 const mapStateToProps = (state) => {
   return {
     movieList: state.movieListReducer.movies,
+  };
+};
+// Needed to convert redux actions to props for the component
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeMovieFromWatchList: (movie) => dispatch(removeFromWatchList(movie)),
   };
 };
 
