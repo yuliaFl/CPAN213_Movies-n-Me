@@ -26,7 +26,7 @@ export default function Welcome({ navigation }) {
         duration: 3000,
       }).start();
 
-      setTimeout(() => { navigation.navigate("Navigation") }, 3000);
+      setTimeout(() => { navigation.navigate("Movies n' Me") }, 3000);
     }, [n]);
 
     return (
