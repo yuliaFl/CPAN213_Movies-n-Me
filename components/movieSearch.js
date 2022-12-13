@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F748B7",
     display: "flex",
     height: 60,
-    width: "45%",
+    width: "49%",
     borderRadius: 100,
     marginTop: 20,
     justifyContent: "center",

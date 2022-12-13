@@ -127,7 +127,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   buttons: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   button: {
     backgroundColor: "#E3D9FF",
