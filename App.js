@@ -24,7 +24,7 @@ function MyStack() {
     <Stack.Navigator style={styles.container}>
       <Stack.Group screenOptions={options}>
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Navigation" component={Navigation} />
+      <Stack.Screen name="Movies n' Me" component={Navigation} />
       <Stack.Screen name="Home" component={HomePage} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="MoviePage" component={MoviePage} />

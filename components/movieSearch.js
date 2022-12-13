@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState} from "react";
 import {
   StyleSheet,
   Text,
@@ -9,6 +10,7 @@ import {
   NativeModules,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { connect, Provider } from "react-redux"; //npm install --save react-redux
 import store from "../redux/store/index";
@@ -72,12 +74,15 @@ const MovieSearchPage = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
     Response: "True",
   };
   const [movie, setMovie] = React.useState(emptyMovie);
+  const [showLoad, setShowLoad] = useState(false);
   const searchMovie = (name) => {
+    setShowLoad(true);
     fetch("https://www.omdbapi.com/?apikey=a4f1f727&t="+name) //API
       .then((response) => response.json())
       .then((json) => {
         if (json.Response == "True") {
           setMovie(json);
+          setShowLoad(false);
         } else {
           setMovie(emptyMovie);
         }
@@ -96,7 +101,7 @@ const MovieSearchPage = ({ addMovieToWatchList, removeMovieFromWatchList }) => {
         placeholder="Search movie name. . ."
         onChangeText={searchMovie}
       />
-
+       <ActivityIndicator size="large" color="#00ff00" animating={showLoad} />
       <View style={styles.seperator}/>
 
       <Text style={styles.movieTitle}>{movie.Title}</Text>
