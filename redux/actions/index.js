@@ -1,4 +1,4 @@
-import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST } from '../actionTypes/index';
+import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST } from '../actiontypes/index';
 
 export const addToWatchList = (movie) => ({
   type: ADD_TO_WATCHLIST,

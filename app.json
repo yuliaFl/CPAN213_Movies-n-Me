@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Movies n' Me",
-    "slug": "Movies n' Me",
+    "slug": "Movies_n_Me",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.justinkp.Movies_n_Me"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2da9458e-60f1-4f82-801e-6aff17c32f4d"
+      }
     }
   }
 }

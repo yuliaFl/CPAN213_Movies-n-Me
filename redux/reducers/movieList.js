@@ -1,4 +1,4 @@
-import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST } from '../actionTypes/index';
+import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST } from '../actiontypes/index';
 
 const initialState = {
   movies: []
